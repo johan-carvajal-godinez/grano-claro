@@ -1,0 +1,4 @@
+  .console-grid { grid-template-columns: minmax(0, 1fr); }
+  .walk > li { grid-template-columns: 1.9rem minmax(0, 1fr); }
+  .walk > li > button { grid-column: 2; justify-self: start; }
+  .facts > div { grid-template-columns: 5rem minmax(0, 1fr); }

@@ -1,0 +1,335 @@
+- banner:
+  - heading "Grano Claro" [level=1]
+  - text: "#top"
+  - paragraph: Tienda de café en una sola página, construida para que un agente de software compre en nombre de una persona.
+  - paragraph:
+    - strong: "Demostración:"
+    - text: los pedidos son simulados y no se cobra nada.
+  - navigation "Secciones de la página":
+    - list:
+      - listitem:
+        - link "Para agentes":
+          - /url: "#for-agents"
+      - listitem:
+        - link "Catálogo":
+          - /url: "#catalog"
+      - listitem:
+        - link "Carrito":
+          - /url: "#cart"
+      - listitem:
+        - link "Pedido":
+          - /url: "#checkout"
+      - listitem:
+        - link "Políticas":
+          - /url: "#policies"
+- main:
+  - region "Estado":
+    - heading "Estado" [level=2]
+    - text: "#status"
+    - status: Listo La página está lista. Todavía no se ha hecho ninguna acción. Evento 0.
+    - paragraph: "Carrito: 0 bolsas, subtotal USD 0.00. Último pedido: ninguno."
+  - region "Para agentes":
+    - heading "Para agentes" [level=2]
+    - text: "#for-agents"
+    - paragraph:
+      - text: "Todo lo que se puede hacer en esta tienda está en esta página: sin ventanas emergentes, sin desplazamiento infinito y sin pasos que caduquen en menos de 30 minutos. Cada acción deja su resultado en"
+      - link "Estado":
+        - /url: "#status-panel"
+      - text: (
+      - code: "#status"
+      - text: ) con un número de evento y un código.
+    - list:
+      - listitem:
+        - text: Consulte el
+        - link "catálogo":
+          - /url: "#catalog"
+        - text: ": 6 cafés con SKU, precio en USD (impuestos incluidos), peso en gramos y bolsas disponibles. Para filtrarlo, use el formulario"
+        - code: "#filters"
+        - text: o la URL, por ejemplo
+        - code: "?roast=light&in_stock_only=true"
+        - text: .
+      - listitem:
+        - text: Agregue cafés con el formulario
+        - code: "#add-to-cart"
+        - text: ": marque la fila del café, elija la molienda y la cantidad, y pulse «Agregar al carrito»."
+      - listitem:
+        - text: Revise el
+        - link "carrito":
+          - /url: "#cart"
+        - text: . Cada línea tiene un identificador (L1, L2…) y un botón «Quitar».
+      - listitem:
+        - text: Prepare el pedido con
+        - code: "#prepare-order"
+        - text: ". Este paso no cobra: calcula el envío y devuelve el número de pedido y el total exacto."
+      - listitem:
+        - text: Muestre ese total a la persona usuaria. Con su aprobación, escriba el total en
+        - code: "#confirm-order"
+        - text: y pulse «Confirmar y pagar», el único paso con cargo.
+    - heading "Convenciones" [level=3]
+    - term: Montos
+    - definition: "USD con punto decimal: 14.50 son catorce dólares con cincuenta centavos. Impuestos incluidos."
+    - term: Fechas
+    - definition: ISO 8601 (AAAA-MM-DD). La tienda usa la hora UTC−06:00.
+    - term: Identificadores
+    - definition:
+      - text: SKU de
+      - code: GC-001
+      - text: a
+      - code: GC-006
+      - text: ; origen como código de país ISO 3166-1 (
+      - code: CO
+      - text: ","
+      - code: ET
+      - text: …); molienda como
+      - code: whole
+      - text: ","
+      - code: espresso
+      - text: ","
+      - code: filter
+      - text: o
+      - code: french_press
+      - text: .
+    - term: Errores
+    - definition:
+      - text: Código estable (por ejemplo
+      - code: ERR_STOCK
+      - text: ), el motivo y cómo corregirlo. Los mensajes permanecen hasta la siguiente acción.
+    - heading "Otras formas de usar la tienda" [level=3]
+    - term: WebMCP
+    - definition:
+      - text: "Cada formulario es una herramienta:"
+      - code: search_products
+      - text: ","
+      - code: add_to_cart
+      - text: ","
+      - code: prepare_order
+      - text: "y"
+      - code: confirm_order
+      - text: ; además se registran
+      - code: remove_from_cart
+      - text: "y"
+      - code: get_cart
+      - text: .
+      - code: confirm_order
+      - text: "solo rellena el formulario: el envío lo hace la persona."
+    - term: JavaScript
+    - definition:
+      - code: await granoClaro.call(nombre, argumentos)
+      - text: con las mismas herramientas, salvo
+      - code: confirm_order
+      - text: . Los esquemas JSON están en
+      - code: "#agent-tools"
+      - text: .
+    - term: HTTP
+    - definition:
+      - text: "En el sitio publicado:"
+      - code: /llms.txt
+      - text: ","
+      - code: /index.md
+      - text: y la API de
+      - code: /openapi.yaml
+      - text: . En esta vista previa funcionan la página y su API JavaScript.
+  - region "Catálogo":
+    - heading "Catálogo" [level=2]
+    - text: "#catalog"
+    - paragraph: 6 cafés de especialidad en bolsas selladas. Precio por bolsa en USD, impuestos incluidos. Envío a domicilio USD 5.00, gratis desde USD 40.00; retiro en tienda sin costo.
+    - search "Filtrar el catálogo":
+      - heading "Filtrar el catálogo" [level=3]
+      - text: "#filters Texto"
+      - searchbox "Texto"
+      - text: "Nombre, región, país o proceso. Ejemplo: natural. Origen"
+      - combobox "Origen":
+        - option "Cualquier origen" [selected]
+        - option "Brasil (BR)"
+        - option "Colombia (CO)"
+        - option "Etiopía (ET)"
+        - option "Guatemala (GT)"
+        - option "Indonesia (ID)"
+        - option "Kenia (KE)"
+      - text: Tueste
+      - combobox "Tueste":
+        - option "Cualquier tueste" [selected]
+        - option "Claro"
+        - option "Medio"
+        - option "Oscuro"
+      - text: Precio máximo (USD)
+      - spinbutton "Precio máximo (USD)"
+      - text: "Por bolsa, con punto decimal. Ejemplo: 16.00"
+      - checkbox "Solo cafés disponibles"
+      - text: Solo cafés disponibles
+      - button "Aplicar filtros"
+      - button "Quitar filtros"
+      - paragraph: Mostrando 6 de 6 cafés.
+    - form "Agregar al carrito":
+      - heading "Agregar al carrito" [level=3]
+      - text: "#add-to-cart"
+      - group "Café (marque una fila)":
+        - text: Café (marque una fila)
+        - table "6 cafés. Precio por bolsa en USD, impuestos incluidos.":
+          - caption: 6 cafés. Precio por bolsa en USD, impuestos incluidos.
+          - rowgroup:
+            - row "Elegir SKU Café Origen Proceso Tueste Peso Precio Disponibles":
+              - columnheader "Elegir"
+              - columnheader "SKU"
+              - columnheader "Café"
+              - columnheader "Origen"
+              - columnheader "Proceso"
+              - columnheader "Tueste"
+              - columnheader "Peso"
+              - columnheader "Precio"
+              - columnheader "Disponibles"
+          - rowgroup:
+            - row "Huila Colombia (CO) 340 g GC-001 Lavado Medio USD 14.50 12 bolsas":
+              - cell "Huila Colombia (CO) 340 g":
+                - radio "Huila Colombia (CO) 340 g"
+              - cell "GC-001":
+                - code: GC-001
+              - rowheader "Huila"
+              - cell "Colombia (CO)"
+              - cell "Lavado"
+              - cell "Medio"
+              - cell "340 g"
+              - cell "USD 14.50"
+              - cell "12 bolsas"
+            - row "Yirgacheffe Etiopía (ET) 340 g GC-002 Lavado Claro USD 17.00 8 bolsas":
+              - cell "Yirgacheffe Etiopía (ET) 340 g":
+                - radio "Yirgacheffe Etiopía (ET) 340 g"
+              - cell "GC-002":
+                - code: GC-002
+              - rowheader "Yirgacheffe"
+              - cell "Etiopía (ET)"
+              - cell "Lavado"
+              - cell "Claro"
+              - cell "340 g"
+              - cell "USD 17.00"
+              - cell "8 bolsas"
+            - row "Huehuetenango Guatemala (GT) 340 g GC-003 Lavado Oscuro USD 13.00 Agotado":
+              - cell "Huehuetenango Guatemala (GT) 340 g":
+                - radio "Huehuetenango Guatemala (GT) 340 g" [disabled]
+              - cell "GC-003":
+                - code: GC-003
+              - rowheader "Huehuetenango"
+              - cell "Guatemala (GT)"
+              - cell "Lavado"
+              - cell "Oscuro"
+              - cell "340 g"
+              - cell "USD 13.00"
+              - cell "Agotado"
+            - row "Nyeri Kenia (KE) 250 g GC-004 Lavado Claro USD 18.50 5 bolsas":
+              - cell "Nyeri Kenia (KE) 250 g":
+                - radio "Nyeri Kenia (KE) 250 g"
+              - cell "GC-004":
+                - code: GC-004
+              - rowheader "Nyeri"
+              - cell "Kenia (KE)"
+              - cell "Lavado"
+              - cell "Claro"
+              - cell "250 g"
+              - cell "USD 18.50"
+              - cell "5 bolsas"
+            - row "Cerrado Mineiro Brasil (BR) 500 g GC-005 Natural Medio USD 15.00 20 bolsas":
+              - cell "Cerrado Mineiro Brasil (BR) 500 g":
+                - radio "Cerrado Mineiro Brasil (BR) 500 g"
+              - cell "GC-005":
+                - code: GC-005
+              - rowheader "Cerrado Mineiro"
+              - cell "Brasil (BR)"
+              - cell "Natural"
+              - cell "Medio"
+              - cell "500 g"
+              - cell "USD 15.00"
+              - cell "20 bolsas"
+            - row "Sumatra Mandheling Indonesia (ID) 340 g GC-006 Semilavado Oscuro USD 14.00 3 bolsas":
+              - cell "Sumatra Mandheling Indonesia (ID) 340 g":
+                - radio "Sumatra Mandheling Indonesia (ID) 340 g"
+              - cell "GC-006":
+                - code: GC-006
+              - rowheader "Sumatra Mandheling"
+              - cell "Indonesia (ID)"
+              - cell "Semilavado"
+              - cell "Oscuro"
+              - cell "340 g"
+              - cell "USD 14.00"
+              - cell "3 bolsas"
+      - group "Molienda":
+        - text: Molienda
+        - radio "Grano entero"
+        - text: Grano entero
+        - radio "Molido para espresso"
+        - text: Molido para espresso
+        - radio "Molido para filtro"
+        - text: Molido para filtro
+        - radio "Molido grueso (prensa francesa)"
+        - text: Molido grueso (prensa francesa)
+      - text: Cantidad de bolsas
+      - spinbutton "Cantidad de bolsas": "1"
+      - button "Agregar al carrito"
+      - paragraph: Entero de 1 a 10, sin superar las bolsas disponibles.
+      - paragraph
+  - region "Carrito":
+    - heading "Carrito" [level=2]
+    - text: "#cart"
+    - paragraph:
+      - text: El carrito está vacío. Agregue cafés desde el
+      - link "formulario del catálogo":
+        - /url: "#add-to-cart"
+      - text: .
+  - region "Pedido":
+    - heading "Pedido" [level=2]
+    - text: "#checkout"
+    - paragraph: El pedido se hace en dos pasos. El paso 1 calcula el total sin cobrar. El paso 2 cobra y necesita la aprobación explícita de la persona usuaria.
+    - form "Paso 1. Preparar el pedido":
+      - heading "Paso 1. Preparar el pedido" [level=3]
+      - text: "#prepare-order Nombre y apellido"
+      - textbox "Nombre y apellido"
+      - text: Correo electrónico
+      - textbox "Correo electrónico"
+      - text: Recibe el comprobante. Formato nombre@dominio.tld
+      - group "Entrega":
+        - text: Entrega
+        - radio "Envío a domicilio (USD 5.00; gratis desde USD 40.00)"
+        - text: Envío a domicilio (USD 5.00; gratis desde USD 40.00)
+        - radio "Retiro en tienda (sin costo)"
+        - text: Retiro en tienda (sin costo)
+      - text: Dirección de entrega
+      - textbox "Dirección de entrega"
+      - text: Obligatoria si elige envío a domicilio. Fecha de entrega
+      - textbox "Fecha de entrega":
+        - /placeholder: AAAA-MM-DD
+      - text: Formato AAAA-MM-DD, entre 2026-10-17 y 2026-11-14. Indicaciones (opcional)
+      - textbox "Indicaciones (opcional)"
+      - button "Preparar pedido (sin cobro)"
+      - paragraph
+    - form "Paso 2. Confirmar y pagar":
+      - heading "Paso 2. Confirmar y pagar" [level=3]
+      - text: "#confirm-order"
+      - paragraph: Este paso cobra el pedido. Antes de enviarlo, la persona usuaria tiene que haber aprobado el total exacto. Escribir el total es la prueba de que se revisó.
+      - group:
+        - text: Total aprobado (USD)
+        - textbox "Total aprobado (USD)" [disabled]
+        - button "Confirmar y pagar" [disabled]
+        - paragraph: Escriba el total del resumen, por ejemplo 31.00.
+      - paragraph: No hay ningún pedido preparado.
+  - region "Políticas para agentes":
+    - heading "Políticas para agentes" [level=2]
+    - text: "#policies"
+    - term: Sin aprobación previa
+    - definition: Consultar y filtrar el catálogo, agregar y quitar cafés del carrito, preparar pedidos.
+    - term: Con aprobación explícita
+    - definition: Confirmar y pagar. La persona usuaria aprueba el total exacto antes de cada pago.
+    - term: Límites
+    - definition: Hasta 10 bolsas por café y pedido. Un pedido preparado vence a los 30 minutos y se anula si el carrito cambia.
+    - term: Datos personales
+    - definition: Nombre, correo y, para envíos, dirección. Se usan solo para entregar el pedido.
+    - term: Identificación
+    - definition: En el sitio publicado, los agentes se identifican con su User-Agent y, si pueden, con firmas HTTP (Web Bot Auth). La tienda no usa CAPTCHA.
+    - term: Contacto humano
+    - definition:
+      - link "soporte@granoclaro.example":
+        - /url: mailto:soporte@granoclaro.example
+- contentinfo:
+  - paragraph:
+    - text: Grano Claro es una tienda ficticia para demostrar diseño web orientado a agentes. Catálogo actualizado el
+    - time: 6 de octubre de 2026
+    - text: . Interfaz para agentes, versión 1.0.
+  - paragraph: "Diagnóstico de este navegador: no expone WebMCP; los formularios y la API JavaScript funcionan igual."

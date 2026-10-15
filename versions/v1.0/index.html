@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Grano Claro: tienda de café optimizada para agentes (demostración)</title>
+<meta name="description" content="Tienda de café de demostración diseñada para agentes de IA: 6 cafés con SKU, precio en USD y bolsas disponibles; carrito y pedido en dos pasos, con aprobación de la persona usuaria para pagar.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://granoclaro.example/">
+<link rel="alternate" type="text/markdown" href="https://granoclaro.example/index.md" title="Esta página en Markdown">
+<link rel="service-desc" type="application/vnd.oai.openapi" href="https://granoclaro.example/openapi.yaml">
+<link rel="api-catalog" href="https://granoclaro.example/.well-known/api-catalog">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;600&amp;family=Atkinson+Hyperlegible+Next:wght@400;600;700&amp;display=optional">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://granoclaro.example/#website","url":"https://granoclaro.example/","name":"Grano Claro","inLanguage":"es","publisher":{"@id":"https://granoclaro.example/#store"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://granoclaro.example/?query={search_term_string}"},"query-input":"required name=search_term_string"}},{"@type":"OnlineStore","@id":"https://granoclaro.example/#store","name":"Grano Claro","url":"https://granoclaro.example/","email":"soporte@granoclaro.example","description":"Tienda de café ficticia, de demostración, diseñada para que agentes de IA compren en nombre de una persona."},{"@type":"ItemList","@id":"https://granoclaro.example/#catalog","name":"Catálogo de cafés","numberOfItems":6,"dateModified":"2026-10-06","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Product","@id":"https://granoclaro.example/#product-GC-001","sku":"GC-001","name":"Huila, Colombia, 340 g","description":"Café de especialidad de Colombia, proceso lavado, tueste medio. Bolsa de 340 g.","brand":{"@type":"Brand","name":"Grano Claro"},"countryOfOrigin":{"@type":"Country","name":"Colombia","identifier":"CO"},"weight":{"@type":"QuantitativeValue","value":340,"unitCode":"GRM","unitText":"g"},"additionalProperty":[{"@type":"PropertyValue","name":"proceso","value":"lavado"},{"@type":"PropertyValue","name":"tueste","value":"medium"}],"offers":{"@type":"Offer","url":"https://granoclaro.example/#product-GC-001","price":"14.50","priceCurrency":"USD","availability":"https://schema.org/InStock","inventoryLevel":{"@type":"QuantitativeValue","value":12},"seller":{"@id":"https://granoclaro.example/#store"}}}},{"@type":"ListItem","position":2,"item":{"@type":"Product","@id":"https://granoclaro.example/#product-GC-002","sku":"GC-002","name":"Yirgacheffe, Etiopía, 340 g","description":"Café de especialidad de Etiopía, proceso lavado, tueste claro. Bolsa de 340 g.","brand":{"@type":"Brand","name":"Grano Claro"},"countryOfOrigin":{"@type":"Country","name":"Etiopía","identifier":"ET"},"weight":{"@type":"QuantitativeValue","value":340,"unitCode":"GRM","unitText":"g"},"additionalProperty":[{"@type":"PropertyValue","name":"proceso","value":"lavado"},{"@type":"PropertyValue","name":"tueste","value":"light"}],"offers":{"@type":"Offer","url":"https://granoclaro.example/#product-GC-002","price":"17.00","priceCurrency":"USD","availability":"https://schema.org/InStock","inventoryLevel":{"@type":"QuantitativeValue","value":8},"seller":{"@id":"https://granoclaro.example/#store"}}}},{"@type":"ListItem","position":3,"item":{"@type":"Product","@id":"https://granoclaro.example/#product-GC-003","sku":"GC-003","name":"Huehuetenango, Guatemala, 340 g","description":"Café de especialidad de Guatemala, proceso lavado, tueste oscuro. Bolsa de 340 g.","brand":{"@type":"Brand","name":"Grano Claro"},"countryOfOrigin":{"@type":"Country","name":"Guatemala","identifier":"GT"},"weight":{"@type":"QuantitativeValue","value":340,"unitCode":"GRM","unitText":"g"},"additionalProperty":[{"@type":"PropertyValue","name":"proceso","value":"lavado"},{"@type":"PropertyValue","name":"tueste","value":"dark"}],"offers":{"@type":"Offer","url":"https://granoclaro.example/#product-GC-003","price":"13.00","priceCurrency":"USD","availability":"https://schema.org/OutOfStock","inventoryLevel":{"@type":"QuantitativeValue","value":0},"seller":{"@id":"https://granoclaro.example/#store"}}}},{"@type":"ListItem","position":4,"item":{"@type":"Product","@id":"https://granoclaro.example/#product-GC-004","sku":"GC-004","name":"Nyeri, Kenia, 250 g","description":"Café de especialidad de Kenia, proceso lavado, tueste claro. Bolsa de 250 g.","brand":{"@type":"Brand","name":"Grano Claro"},"countryOfOrigin":{"@type":"Country","name":"Kenia","identifier":"KE"},"weight":{"@type":"QuantitativeValue","value":250,"unitCode":"GRM","unitText":"g"},"additionalProperty":[{"@type":"PropertyValue","name":"proceso","value":"lavado"},{"@type":"PropertyValue","name":"tueste","value":"light"}],"offers":{"@type":"Offer","url":"https://granoclaro.example/#product-GC-004","price":"18.50","priceCurrency":"USD","availability":"https://schema.org/InStock","inventoryLevel":{"@type":"QuantitativeValue","value":5},"seller":{"@id":"https://granoclaro.example/#store"}}}},{"@type":"ListItem","position":5,"item":{"@type":"Product","@id":"https://granoclaro.example/#product-GC-005","sku":"GC-005","name":"Cerrado Mineiro, Brasil, 500 g","description":"Café de especialidad de Brasil, proceso natural, tueste medio. Bolsa de 500 g.","brand":{"@type":"Brand","name":"Grano Claro"},"countryOfOrigin":{"@type":"Country","name":"Brasil","identifier":"BR"},"weight":{"@type":"QuantitativeValue","value":500,"unitCode":"GRM","unitText":"g"},"additionalProperty":[{"@type":"PropertyValue","name":"proceso","value":"natural"},{"@type":"PropertyValue","name":"tueste","value":"medium"}],"offers":{"@type":"Offer","url":"https://granoclaro.example/#product-GC-005","price":"15.00","priceCurrency":"USD","availability":"https://schema.org/InStock","inventoryLevel":{"@type":"QuantitativeValue","value":20},"seller":{"@id":"https://granoclaro.example/#store"}}}},{"@type":"ListItem","position":6,"item":{"@type":"Product","@id":"https://granoclaro.example/#product-GC-006","sku":"GC-006","name":"Sumatra Mandheling, Indonesia, 340 g","description":"Café de especialidad de Indonesia, proceso semilavado, tueste oscuro. Bolsa de 340 g.","brand":{"@type":"Brand","name":"Grano Claro"},"countryOfOrigin":{"@type":"Country","name":"Indonesia","identifier":"ID"},"weight":{"@type":"QuantitativeValue","value":340,"unitCode":"GRM","unitText":"g"},"additionalProperty":[{"@type":"PropertyValue","name":"proceso","value":"semilavado"},{"@type":"PropertyValue","name":"tueste","value":"dark"}],"offers":{"@type":"Offer","url":"https://granoclaro.example/#product-GC-006","price":"14.00","priceCurrency":"USD","availability":"https://schema.org/InStock","inventoryLevel":{"@type":"QuantitativeValue","value":3},"seller":{"@id":"https://granoclaro.example/#store"}}}}]}]}
+</script>
+<script type="application/json" id="agent-tools">
+{"version":"1.0","conventions":{"currency":"USD","money_format":"cadena decimal con punto y dos cifras, por ejemplo 14.50","dates":"ISO 8601 (AAAA-MM-DD); la tienda usa UTC−06:00","result":"{ok, code, message, hint?, field?, data?}"},"tools":[{"name":"search_products","description":"Busca y filtra el catálogo de cafés por texto, país de origen, tueste, precio máximo en USD y disponibilidad. Devuelve los cafés que coinciden, con SKU, precio y bolsas disponibles, y aplica el mismo filtro en la página.","binding":{"webmcp":"declarative","form":"#filters","javascript":true},"annotations":{"readOnlyHint":true},"inputSchema":{"type":"object","properties":{"query":{"type":"string","description":"Texto libre: nombre, región, país o proceso. Vacío significa sin filtro de texto."},"origin":{"type":"string","description":"País de origen como código ISO 3166-1 alfa-2. Vacío significa cualquier origen.","anyOf":[{"type":"string","const":"","title":"Cualquier origen"},{"type":"string","const":"BR","title":"Brasil"},{"type":"string","const":"CO","title":"Colombia"},{"type":"string","const":"ET","title":"Etiopía"},{"type":"string","const":"GT","title":"Guatemala"},{"type":"string","const":"ID","title":"Indonesia"},{"type":"string","const":"KE","title":"Kenia"}],"enum":["","BR","CO","ET","GT","ID","KE"]},"roast":{"type":"string","description":"Nivel de tueste. Vacío significa cualquier tueste.","anyOf":[{"type":"string","const":"","title":"Cualquier tueste"},{"type":"string","const":"light","title":"Claro"},{"type":"string","const":"medium","title":"Medio"},{"type":"string","const":"dark","title":"Oscuro"}],"enum":["","light","medium","dark"]},"max_price_usd":{"type":"number","minimum":0,"description":"Precio máximo por bolsa en USD, impuestos incluidos."},"in_stock_only":{"type":"boolean","description":"true: solo cafés con bolsas disponibles."}}}},{"name":"add_to_cart","description":"Agrega un café al carrito: elige el café por SKU, la molienda y la cantidad de bolsas. No cobra nada y el carrito se puede cambiar después.","binding":{"webmcp":"declarative","form":"#add-to-cart","javascript":true},"annotations":{"readOnlyHint":false,"consequentialHint":false},"inputSchema":{"type":"object","properties":{"sku":{"type":"string","description":"SKU del café, tal como aparece en la columna SKU del catálogo.","anyOf":[{"type":"string","const":"GC-001","title":"Huila, Colombia, 340 g, USD 14.50"},{"type":"string","const":"GC-002","title":"Yirgacheffe, Etiopía, 340 g, USD 17.00"},{"type":"string","const":"GC-003","title":"Huehuetenango, Guatemala, 340 g, USD 13.00 (agotado)"},{"type":"string","const":"GC-004","title":"Nyeri, Kenia, 250 g, USD 18.50"},{"type":"string","const":"GC-005","title":"Cerrado Mineiro, Brasil, 500 g, USD 15.00"},{"type":"string","const":"GC-006","title":"Sumatra Mandheling, Indonesia, 340 g, USD 14.00"}],"enum":["GC-001","GC-002","GC-003","GC-004","GC-005","GC-006"]},"grind":{"type":"string","description":"Molienda del café.","anyOf":[{"type":"string","const":"whole","title":"Grano entero"},{"type":"string","const":"espresso","title":"Molido para espresso"},{"type":"string","const":"filter","title":"Molido para filtro"},{"type":"string","const":"french_press","title":"Molido grueso (prensa francesa)"}],"enum":["whole","espresso","filter","french_press"]},"quantity":{"type":"integer","minimum":1,"maximum":10,"default":1,"description":"Número de bolsas, de 1 a 10, sin superar las disponibles."}},"required":["sku","grind"]}},{"name":"remove_from_cart","description":"Quita una línea del carrito por su identificador (L1, L2…). Si había un pedido preparado, se anula porque el carrito cambió.","binding":{"webmcp":"imperative","javascript":true},"annotations":{"readOnlyHint":false,"consequentialHint":false},"inputSchema":{"type":"object","properties":{"line_id":{"type":"string","pattern":"^L[0-9]+$","description":"Identificador de la línea, como aparece en la columna Línea del carrito o en get_cart."}},"required":["line_id"]}},{"name":"get_cart","description":"Devuelve las líneas del carrito con importes en USD y, si existe, el pedido pendiente de aprobación con su total exacto.","binding":{"webmcp":"imperative","javascript":true},"annotations":{"readOnlyHint":true},"inputSchema":{"type":"object","properties":{}}},{"name":"prepare_order","description":"Prepara un pedido con el contenido actual del carrito y los datos de entrega. Calcula el envío y el total exacto en USD y devuelve un número de pedido. No cobra nada: el pago se confirma después, con la aprobación de la persona usuaria.","binding":{"webmcp":"declarative","form":"#prepare-order","javascript":true},"annotations":{"readOnlyHint":false,"consequentialHint":false},"inputSchema":{"type":"object","properties":{"full_name":{"type":"string","description":"Nombre y apellido de quien recibe el pedido."},"email":{"type":"string","format":"email","description":"Correo para enviar el comprobante."},"delivery_method":{"type":"string","description":"Forma de entrega del pedido.","anyOf":[{"type":"string","const":"shipping","title":"Envío a domicilio (USD 5.00; gratis desde USD 40.00)"},{"type":"string","const":"pickup","title":"Retiro en tienda (sin costo)"}],"enum":["shipping","pickup"]},"address":{"type":"string","description":"Dirección completa. Obligatoria si la entrega es shipping."},"delivery_date":{"type":"string","format":"date","pattern":"^\\d{4}-\\d{2}-\\d{2}$","description":"Fecha de entrega AAAA-MM-DD, entre 2 y 30 días a partir de hoy (hora de la tienda, UTC−06:00)."},"notes":{"type":"string","maxLength":500,"description":"Indicaciones opcionales para la entrega."}},"required":["full_name","email","delivery_method","delivery_date"]}},{"name":"confirm_order","description":"Confirma y paga el pedido preparado. Es la única acción con cargo real: el agente rellena el total aprobado por la persona usuaria y ella misma pulsa «Confirmar y pagar».","binding":{"webmcp":"declarative","form":"#confirm-order","autosubmit":false,"javascript":false},"annotations":{"readOnlyHint":false,"consequentialHint":true},"inputSchema":{"type":"object","properties":{"total_confirmation":{"type":"string","description":"Total exacto del pedido en USD, tal como lo aprobó la persona usuaria. Ejemplo: 31.00"}},"required":["total_confirmation"]}}]}
+</script>
+<style>
+:root {
+  --paper: #ffffff;
+  --ink: #0f1e3d;
+  --ink-2: #46526b;
+  --rule: #a3adc2;
+  --action: #1f4fd8;
+  --action-ink: #ffffff;
+  --ok: #17603a;
+  --err: #b3261e;
+  --tag: #e8edf8;
+  --select: #e8edf8;
+  --font-text: "Atkinson Hyperlegible Next", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-code: "Atkinson Hyperlegible Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0d1526;
+    --ink: #e4e9f4;
+    --ink-2: #a9b4cb;
+    --rule: #4b5a78;
+    --action: #8fb0ff;
+    --action-ink: #0d1526;
+    --ok: #7fd3a0;
+    --err: #ff9a8f;
+    --tag: #1a2540;
+    --select: #1a2a4d;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0d1526;
+  --ink: #e4e9f4;
+  --ink-2: #a9b4cb;
+  --rule: #4b5a78;
+  --action: #8fb0ff;
+  --action-ink: #0d1526;
+  --ok: #7fd3a0;
+  --err: #ff9a8f;
+  --tag: #1a2540;
+  --select: #1a2a4d;
+}
+html { scroll-padding-top: env(safe-area-inset-top, 0px); -webkit-text-size-adjust: 100%; }
+*, *::before, *::after { box-sizing: inherit; }
+[hidden] { display: none !important; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 1.0625rem/1.55 var(--font-text);
+}
+.page {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 1.75rem max(1rem, env(safe-area-inset-right, 0px)) 3rem max(1rem, env(safe-area-inset-left, 0px));
+}
+h1, h2, h3 { margin: 0; line-height: 1.2; font-weight: 700; }
+h1 { font-size: clamp(2.125rem, 6vw, 3rem); letter-spacing: -0.015em; }
+h2 { font-size: 1.375rem; }
+h3 { font-size: 1.125rem; }
+p { margin: 0 0 .75rem; }
+a { color: var(--action); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+code, .ref {
+  font-family: var(--font-code);
+  font-size: .9em;
+  background: var(--tag);
+  padding: .05rem .35rem;
+  border-radius: 3px;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.ref, td > code { white-space: nowrap; }
+.prose { max-width: 68ch; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* Cajas: cada borde visible corresponde a un elemento semántico (header, section, form)
+   y lleva su designador (#id) sobre el borde, como en un plano. */
+.box {
+  border: 2px solid var(--ink);
+  padding: 0 1.25rem 1.25rem;
+  margin: 2.5rem 0 0;
+  background: var(--paper);
+}
+.box-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .25rem .75rem;
+  width: fit-content;
+  max-width: 100%;
+  font-size: 1.375rem;
+  line-height: 1.2;
+  margin: -0.6em 0 .9rem -0.6rem;
+  padding: 0 .6rem;
+  background: var(--paper);
+}
+.box-head > h1, .box-head > h2, .box-head > h3 { font-size: 1em; }
+.box-head .ref { font-size: .875rem; line-height: 1.4; color: var(--ink-2); font-weight: 400; }
+.box .box { border-width: 1.5px; margin-top: 2rem; padding: 0 1rem 1rem; }
+.box .box > .box-head { font-size: 1.125rem; margin-left: -0.5rem; padding: 0 .5rem; }
+.box--header { margin-top: 1.5rem; padding-bottom: 1.5rem; }
+.box--header > .box-head { font-size: clamp(2.125rem, 6vw, 3rem); }
+.box--consequential { border-style: double; border-width: 6px; }
+.box .box.box--consequential { border-width: 6px; }
+
+.lede { font-size: 1.1875rem; max-width: 60ch; margin-bottom: .5rem; }
+.demo-note { color: var(--ink-2); }
+.nav-list { display: flex; flex-wrap: wrap; gap: .25rem 1.5rem; list-style: none; padding: 0; margin: 1rem 0 0; }
+.nav-list a { display: inline-block; padding: .35rem 0; font-weight: 600; }
+
+/* Estado */
+.status {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .35rem .75rem;
+  margin: 0; min-height: 2.8em;
+}
+.pill {
+  font-weight: 700; padding: .05rem .6rem; border: 2px solid currentColor; border-radius: 999px;
+  color: var(--ink-2);
+}
+.status[data-state="success"] .pill { color: var(--ok); }
+.status[data-state="error"] .pill { color: var(--err); }
+.status[data-state="info"] .pill { color: var(--action); }
+.meta { color: var(--ink-2); font-size: .9375rem; }
+.state-line { margin: .5rem 0 0; padding-top: .6rem; border-top: 1px solid var(--rule); min-height: 1.6em; }
+
+/* Instrucciones */
+.steps { margin: .5rem 0 0; padding-left: 1.6rem; max-width: 72ch; }
+.steps li { margin: .45rem 0; padding-left: .25rem; }
+.sub { margin: 1.5rem 0 .6rem; font-size: 1.0625rem; }
+.dl { display: grid; grid-template-columns: minmax(9rem, max-content) minmax(0, 1fr); gap: .45rem 1.5rem; margin: 0; max-width: 78ch; }
+.dl dt { font-weight: 700; }
+.dl dd { margin: 0; }
+
+/* Formularios */
+fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+legend { font-weight: 700; padding: 0; margin-bottom: .5rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(13.5rem, 100%), 1fr)); gap: 1rem 1.25rem; }
+.field { display: flex; flex-direction: column; gap: .3rem; }
+.field > label, .field-label { font-weight: 700; }
+.hint { font-size: .9375rem; color: var(--ink-2); font-weight: 400; }
+.field-error { color: var(--err); font-weight: 700; font-size: .9375rem; }
+.check { display: flex; align-items: center; gap: .6rem; min-height: 2.75rem; font-weight: 700; align-self: end; }
+input[type="text"], input[type="search"], input[type="email"], input[type="number"], input[type="date"], select, textarea {
+  font: inherit; color: var(--ink); background: var(--paper);
+  border: 2px solid var(--ink-2); border-radius: 4px;
+  padding: .45rem .6rem; min-height: 2.75rem; width: 100%;
+}
+textarea { min-height: 4.5rem; resize: vertical; }
+input[type="radio"], input[type="checkbox"] { width: 1.3rem; height: 1.3rem; margin: 0; accent-color: var(--action); flex: none; }
+[aria-invalid="true"] { border-color: var(--err) !important; outline: 2px solid var(--err); outline-offset: 1px; }
+:focus-visible { outline: 3px solid var(--action); outline-offset: 2px; }
+fieldset:disabled { opacity: .6; }
+.choices { display: flex; flex-wrap: wrap; gap: .6rem; }
+.choice {
+  display: inline-flex; align-items: center; gap: .55rem; min-height: 2.75rem;
+  padding: .25rem .8rem; border: 1.5px solid var(--rule); border-radius: 4px; cursor: pointer;
+}
+.choice:has(input:checked) { border-color: var(--action); background: var(--select); box-shadow: inset 0 0 0 1px var(--action); }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1rem; margin-top: 1.1rem; }
+.row-end { display: flex; flex-wrap: wrap; align-items: end; gap: 1rem 1.25rem; margin-top: 1.25rem; }
+.row-end .field { width: 13rem; }
+button {
+  font: inherit; font-weight: 700; min-height: 2.75rem; padding: .5rem 1.15rem;
+  border: 2px solid var(--action); border-radius: 4px;
+  background: var(--action); color: var(--action-ink); cursor: pointer;
+}
+button.secondary { background: transparent; color: var(--action); }
+button.small { min-height: 2.25rem; padding: .2rem .7rem; font-size: .9375rem; }
+button.pay { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+button:disabled { cursor: not-allowed; }
+.local-result { margin: 0; min-height: 1.6em; font-weight: 700; flex: 1 1 18rem; }
+.mt { margin-top: 1.15rem; }
+.below { margin: .4rem 0 0; }
+.below-result { margin-top: .6rem; }
+.row-end.tight { margin-top: .25rem; }
+.row-end .field--total { width: 16rem; }
+.local-result[data-state="success"] { color: var(--ok); }
+.local-result[data-state="error"] { color: var(--err); }
+
+/* Tablas */
+.table-wrap { overflow-x: auto; margin: 0 -.25rem; padding: 0 .25rem; }
+table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+#catalog-table { min-width: 47rem; }
+#cart-table { min-width: 40rem; }
+caption { caption-side: top; text-align: left; color: var(--ink-2); padding: 0 0 .5rem; }
+th, td { text-align: left; padding: .55rem .6rem; border-bottom: 1px solid var(--rule); vertical-align: middle; }
+thead th { border-bottom: 2px solid var(--ink); font-size: .9375rem; color: var(--ink-2); white-space: nowrap; }
+tbody th { font-weight: 700; }
+tfoot th, tfoot td { border-bottom: 0; border-top: 2px solid var(--ink); font-weight: 700; }
+.num { text-align: right; white-space: nowrap; }
+td.pick { width: 2.75rem; }
+#catalog-table tbody label { cursor: pointer; }
+#catalog-table tbody tr:has(input:checked) { background: var(--select); box-shadow: inset 4px 0 0 var(--action); }
+#catalog-table tbody tr.is-out { color: var(--ink-2); }
+#catalog-table tbody tr.is-out th { font-weight: 400; }
+
+/* Resumen del pedido */
+.summary { margin-top: 1.75rem; padding: 1rem 1.1rem; background: var(--select); border-left: 4px solid var(--ink); }
+.summary h3 { margin-bottom: .75rem; }
+.summary .total { font-size: 1.25rem; font-weight: 700; }
+.summary ul { margin: 0; padding-left: 1.1rem; }
+
+.site-footer { margin-top: 2.5rem; padding-top: 1rem; border-top: 2px solid var(--ink); color: var(--ink-2); }
+.noscript { margin-top: 1.5rem; padding: .75rem 1rem; border: 2px solid var(--err); }
+
+/* Señal visual de WebMCP declarativo (navegadores compatibles). Reglas separadas:
+   un selector desconocido invalida solo su propia regla. */
+form:tool-form-active { outline: 3px dashed var(--action); outline-offset: 5px; }
+:tool-submit-active { outline: 3px dashed var(--err); outline-offset: 3px; }
+
+@media (max-width: 40rem) {
+  .box { padding: 0 .9rem 1rem; }
+  .box .box { padding: 0 .75rem .9rem; }
+  .dl { grid-template-columns: minmax(0, 1fr); gap: .1rem; }
+  .dl dd { margin-bottom: .6rem; }
+  .row-end .field { width: 100%; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="box box--header" id="top">
+  <div class="box-head"><h1>Grano Claro</h1><span class="ref">#top</span></div>
+  <p class="lede">Tienda de café en una sola página, construida para que un agente de software compre en nombre de una persona.</p>
+  <p class="demo-note"><strong>Demostración:</strong> los pedidos son simulados y no se cobra nada.</p>
+  <nav aria-label="Secciones de la página">
+    <ul class="nav-list">
+      <li><a href="#for-agents">Para agentes</a></li>
+      <li><a href="#catalog">Catálogo</a></li>
+      <li><a href="#cart">Carrito</a></li>
+      <li><a href="#checkout">Pedido</a></li>
+      <li><a href="#policies">Políticas</a></li>
+    </ul>
+  </nav>
+</header>
+
+<noscript><p class="noscript">Sin JavaScript se puede leer todo el catálogo, pero el carrito y el pedido no funcionan en esta vista previa. En el sitio publicado, use la API HTTP descrita en /openapi.yaml.</p></noscript>
+
+<main id="main">
+
+<section class="box" id="status-panel" aria-labelledby="status-title">
+  <div class="box-head"><h2 id="status-title">Estado</h2><span class="ref">#status</span></div>
+  <p class="status" id="status" role="status" aria-live="polite" aria-atomic="true" data-state="idle" data-code="READY" data-seq="0">
+    <span class="pill" data-role="state">Listo</span>
+    <span data-role="message">La página está lista. Todavía no se ha hecho ninguna acción.</span>
+    <span class="meta" data-role="meta">Evento 0.</span>
+  </p>
+  <p class="state-line" id="state-line">Carrito: 0 bolsas, subtotal USD 0.00. Último pedido: ninguno.</p>
+</section>
+
+<section class="box" id="for-agents" aria-labelledby="for-agents-title">
+  <div class="box-head"><h2 id="for-agents-title">Para agentes</h2><span class="ref">#for-agents</span></div>
+  <p class="prose">Todo lo que se puede hacer en esta tienda está en esta página: sin ventanas emergentes, sin desplazamiento infinito y sin pasos que caduquen en menos de 30 minutos. Cada acción deja su resultado en <a href="#status-panel">Estado</a> (<code>#status</code>) con un número de evento y un código.</p>
+  <ol class="steps">
+    <li>Consulte el <a href="#catalog">catálogo</a>: 6 cafés con SKU, precio en USD (impuestos incluidos), peso en gramos y bolsas disponibles. Para filtrarlo, use el formulario <code>#filters</code> o la URL, por ejemplo <code>?roast=light&amp;in_stock_only=true</code>.</li>
+    <li>Agregue cafés con el formulario <code>#add-to-cart</code>: marque la fila del café, elija la molienda y la cantidad, y pulse «Agregar al carrito».</li>
+    <li>Revise el <a href="#cart">carrito</a>. Cada línea tiene un identificador (L1, L2…) y un botón «Quitar».</li>
+    <li>Prepare el pedido con <code>#prepare-order</code>. Este paso no cobra: calcula el envío y devuelve el número de pedido y el total exacto.</li>
+    <li>Muestre ese total a la persona usuaria. Con su aprobación, escriba el total en <code>#confirm-order</code> y pulse «Confirmar y pagar», el único paso con cargo.</li>
+  </ol>
+
+  <h3 class="sub">Convenciones</h3>
+  <dl class="dl">
+    <dt>Montos</dt><dd>USD con punto decimal: 14.50 son catorce dólares con cincuenta centavos. Impuestos incluidos.</dd>
+    <dt>Fechas</dt><dd>ISO 8601 (AAAA-MM-DD). La tienda usa la hora UTC−06:00.</dd>
+    <dt>Identificadores</dt><dd>SKU de <code>GC-001</code> a <code>GC-006</code>; origen como código de país ISO 3166-1 (<code>CO</code>, <code>ET</code>…); molienda como <code>whole</code>, <code>espresso</code>, <code>filter</code> o <code>french_press</code>.</dd>
+    <dt>Errores</dt><dd>Código estable (por ejemplo <code>ERR_STOCK</code>), el motivo y cómo corregirlo. Los mensajes permanecen hasta la siguiente acción.</dd>
+  </dl>
+
+  <h3 class="sub">Otras formas de usar la tienda</h3>
+  <dl class="dl">
+    <dt>WebMCP</dt><dd>Cada formulario es una herramienta: <code>search_products</code>, <code>add_to_cart</code>, <code>prepare_order</code> y <code>confirm_order</code>; además se registran <code>remove_from_cart</code> y <code>get_cart</code>. <code>confirm_order</code> solo rellena el formulario: el envío lo hace la persona.</dd>
+    <dt>JavaScript</dt><dd><code>await granoClaro.call(nombre, argumentos)</code> con las mismas herramientas, salvo <code>confirm_order</code>. Los esquemas JSON están en <code>#agent-tools</code>.</dd>
+    <dt>HTTP</dt><dd>En el sitio publicado: <code>/llms.txt</code>, <code>/index.md</code> y la API de <code>/openapi.yaml</code>. En esta vista previa funcionan la página y su API JavaScript.</dd>
+  </dl>
+</section>
+
+<section class="box" id="catalog" aria-labelledby="catalog-title">
+  <div class="box-head"><h2 id="catalog-title">Catálogo</h2><span class="ref">#catalog</span></div>
+  <p class="prose">6 cafés de especialidad en bolsas selladas. Precio por bolsa en USD, impuestos incluidos. Envío a domicilio USD 5.00, gratis desde USD 40.00; retiro en tienda sin costo.</p>
+
+  <form class="box" id="filters" role="search" method="get" action="#catalog" novalidate
+        aria-labelledby="filters-title"
+        toolname="search_products"
+        tooldescription="Busca y filtra el catálogo de cafés por texto, país de origen, tueste, precio máximo en USD y disponibilidad. Devuelve los cafés que coinciden, con SKU, precio y bolsas disponibles, y aplica el mismo filtro en la página."
+        toolautosubmit>
+    <div class="box-head"><h3 id="filters-title">Filtrar el catálogo</h3><span class="ref">#filters</span></div>
+    <div class="grid">
+      <div class="field">
+        <label for="f-query">Texto</label>
+        <input id="f-query" name="query" type="search" autocomplete="off" aria-describedby="f-query-hint err-query"
+               toolparamdescription="Texto libre: nombre, región, país o proceso. Vacío significa sin filtro de texto.">
+        <span class="hint" id="f-query-hint">Nombre, región, país o proceso. Ejemplo: natural.</span>
+        <span class="field-error" id="err-query" data-error-for="query" hidden></span>
+      </div>
+      <div class="field">
+        <label for="f-origin">Origen</label>
+        <select id="f-origin" name="origin" aria-describedby="err-origin"
+                toolparamdescription="País de origen como código ISO 3166-1 alfa-2. Vacío significa cualquier origen.">
+          <option value="">Cualquier origen</option>
+          <option value="BR">Brasil (BR)</option>
+          <option value="CO">Colombia (CO)</option>
+          <option value="ET">Etiopía (ET)</option>
+          <option value="GT">Guatemala (GT)</option>
+          <option value="ID">Indonesia (ID)</option>
+          <option value="KE">Kenia (KE)</option>
+        </select>
+        <span class="field-error" id="err-origin" data-error-for="origin" hidden></span>
+      </div>
+      <div class="field">
+        <label for="f-roast">Tueste</label>
+        <select id="f-roast" name="roast" aria-describedby="err-roast"
+                toolparamdescription="Nivel de tueste. Vacío significa cualquier tueste.">
+          <option value="">Cualquier tueste</option>
+          <option value="light">Claro</option>
+          <option value="medium">Medio</option>
+          <option value="dark">Oscuro</option>
+        </select>
+        <span class="field-error" id="err-roast" data-error-for="roast" hidden></span>
+      </div>
+      <div class="field">
+        <label for="f-max-price">Precio máximo (USD)</label>
+        <input id="f-max-price" name="max_price_usd" type="number" min="0" step="0.01" inputmode="decimal"
+               aria-describedby="f-max-price-hint err-max_price_usd"
+               toolparamdescription="Precio máximo por bolsa en USD, impuestos incluidos.">
+        <span class="hint" id="f-max-price-hint">Por bolsa, con punto decimal. Ejemplo: 16.00</span>
+        <span class="field-error" id="err-max_price_usd" data-error-for="max_price_usd" hidden></span>
+      </div>
+      <label class="check" for="f-in-stock">
+        <input id="f-in-stock" name="in_stock_only" type="checkbox" value="true"
+               toolparamdescription="Marcado: solo cafés con bolsas disponibles.">
+        Solo cafés disponibles
+      </label>
+    </div>
+    <div class="actions">
+      <button type="submit" id="filters-submit">Aplicar filtros</button>
+      <button type="button" id="filters-clear" class="secondary">Quitar filtros</button>
+      <p class="local-result" id="filters-result">Mostrando 6 de 6 cafés.</p>
+    </div>
+  </form>
+
+  <form class="box" id="add-to-cart" novalidate
+        aria-labelledby="add-title"
+        toolname="add_to_cart"
+        tooldescription="Agrega un café al carrito: elige el café por SKU, la molienda y la cantidad de bolsas. No cobra nada y el carrito se puede cambiar después."
+        toolautosubmit>
+    <div class="box-head"><h3 id="add-title">Agregar al carrito</h3><span class="ref">#add-to-cart</span></div>
+    <fieldset>
+      <legend>Café <span class="hint">(marque una fila)</span></legend>
+      <span class="field-error" id="err-sku" data-error-for="sku" hidden></span>
+      <div class="table-wrap">
+        <table id="catalog-table">
+          <caption>6 cafés. Precio por bolsa en USD, impuestos incluidos.</caption>
+          <thead>
+            <tr>
+              <th scope="col"><span class="sr-only">Elegir</span></th>
+              <th scope="col">SKU</th>
+              <th scope="col">Café</th>
+              <th scope="col">Origen</th>
+              <th scope="col">Proceso</th>
+              <th scope="col">Tueste</th>
+              <th scope="col" class="num">Peso</th>
+              <th scope="col" class="num">Precio</th>
+              <th scope="col" class="num">Disponibles</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="product-GC-001" data-sku="GC-001" data-name="Huila, Colombia, 340 g" data-origin="CO" data-origin-name="Colombia" data-process="Lavado" data-roast="medium" data-weight-g="340" data-price-usd="14.50" data-stock="12">
+              <td class="pick"><input type="radio" id="sku-GC-001" name="sku" value="GC-001" required aria-labelledby="name-GC-001 origin-GC-001 weight-GC-001" aria-describedby="price-GC-001 stock-GC-001 err-sku" toolparamdescription="SKU del café elegido."></td>
+              <td><code>GC-001</code></td>
+              <th scope="row" id="name-GC-001"><label for="sku-GC-001">Huila</label></th>
+              <td id="origin-GC-001">Colombia (CO)</td>
+              <td>Lavado</td>
+              <td>Medio</td>
+              <td class="num" id="weight-GC-001"><data value="340">340 g</data></td>
+              <td class="num" id="price-GC-001"><data value="14.50">USD 14.50</data></td>
+              <td class="num" id="stock-GC-001"><data value="12">12 bolsas</data></td>
+            </tr>
+            <tr id="product-GC-002" data-sku="GC-002" data-name="Yirgacheffe, Etiopía, 340 g" data-origin="ET" data-origin-name="Etiopía" data-process="Lavado" data-roast="light" data-weight-g="340" data-price-usd="17.00" data-stock="8">
+              <td class="pick"><input type="radio" id="sku-GC-002" name="sku" value="GC-002" required aria-labelledby="name-GC-002 origin-GC-002 weight-GC-002" aria-describedby="price-GC-002 stock-GC-002 err-sku" toolparamdescription="SKU del café elegido."></td>
+              <td><code>GC-002</code></td>
+              <th scope="row" id="name-GC-002"><label for="sku-GC-002">Yirgacheffe</label></th>
+              <td id="origin-GC-002">Etiopía (ET)</td>
+              <td>Lavado</td>
+              <td>Claro</td>
+              <td class="num" id="weight-GC-002"><data value="340">340 g</data></td>
+              <td class="num" id="price-GC-002"><data value="17.00">USD 17.00</data></td>
+              <td class="num" id="stock-GC-002"><data value="8">8 bolsas</data></td>
+            </tr>
+            <tr id="product-GC-003" class="is-out" data-sku="GC-003" data-name="Huehuetenango, Guatemala, 340 g" data-origin="GT" data-origin-name="Guatemala" data-process="Lavado" data-roast="dark" data-weight-g="340" data-price-usd="13.00" data-stock="0">
+              <td class="pick"><input type="radio" id="sku-GC-003" name="sku" value="GC-003" required disabled aria-labelledby="name-GC-003 origin-GC-003 weight-GC-003" aria-describedby="price-GC-003 stock-GC-003 err-sku" toolparamdescription="SKU del café elegido."></td>
+              <td><code>GC-003</code></td>
+              <th scope="row" id="name-GC-003"><label for="sku-GC-003">Huehuetenango</label></th>
+              <td id="origin-GC-003">Guatemala (GT)</td>
+              <td>Lavado</td>
+              <td>Oscuro</td>
+              <td class="num" id="weight-GC-003"><data value="340">340 g</data></td>
+              <td class="num" id="price-GC-003"><data value="13.00">USD 13.00</data></td>
+              <td class="num" id="stock-GC-003"><data value="0">Agotado</data></td>
+            </tr>
+            <tr id="product-GC-004" data-sku="GC-004" data-name="Nyeri, Kenia, 250 g" data-origin="KE" data-origin-name="Kenia" data-process="Lavado" data-roast="light" data-weight-g="250" data-price-usd="18.50" data-stock="5">
+              <td class="pick"><input type="radio" id="sku-GC-004" name="sku" value="GC-004" required aria-labelledby="name-GC-004 origin-GC-004 weight-GC-004" aria-describedby="price-GC-004 stock-GC-004 err-sku" toolparamdescription="SKU del café elegido."></td>
+              <td><code>GC-004</code></td>
+              <th scope="row" id="name-GC-004"><label for="sku-GC-004">Nyeri</label></th>
+              <td id="origin-GC-004">Kenia (KE)</td>
+              <td>Lavado</td>
+              <td>Claro</td>
+              <td class="num" id="weight-GC-004"><data value="250">250 g</data></td>
+              <td class="num" id="price-GC-004"><data value="18.50">USD 18.50</data></td>
+              <td class="num" id="stock-GC-004"><data value="5">5 bolsas</data></td>
+            </tr>
+            <tr id="product-GC-005" data-sku="GC-005" data-name="Cerrado Mineiro, Brasil, 500 g" data-origin="BR" data-origin-name="Brasil" data-process="Natural" data-roast="medium" data-weight-g="500" data-price-usd="15.00" data-stock="20">
+              <td class="pick"><input type="radio" id="sku-GC-005" name="sku" value="GC-005" required aria-labelledby="name-GC-005 origin-GC-005 weight-GC-005" aria-describedby="price-GC-005 stock-GC-005 err-sku" toolparamdescription="SKU del café elegido."></td>
+              <td><code>GC-005</code></td>
+              <th scope="row" id="name-GC-005"><label for="sku-GC-005">Cerrado Mineiro</label></th>
+              <td id="origin-GC-005">Brasil (BR)</td>
+              <td>Natural</td>
+              <td>Medio</td>
+              <td class="num" id="weight-GC-005"><data value="500">500 g</data></td>
+              <td class="num" id="price-GC-005"><data value="15.00">USD 15.00</data></td>
+              <td class="num" id="stock-GC-005"><data value="20">20 bolsas</data></td>
+            </tr>
+            <tr id="product-GC-006" data-sku="GC-006" data-name="Sumatra Mandheling, Indonesia, 340 g" data-origin="ID" data-origin-name="Indonesia" data-process="Semilavado" data-roast="dark" data-weight-g="340" data-price-usd="14.00" data-stock="3">
+              <td class="pick"><input type="radio" id="sku-GC-006" name="sku" value="GC-006" required aria-labelledby="name-GC-006 origin-GC-006 weight-GC-006" aria-describedby="price-GC-006 stock-GC-006 err-sku" toolparamdescription="SKU del café elegido."></td>
+              <td><code>GC-006</code></td>
+              <th scope="row" id="name-GC-006"><label for="sku-GC-006">Sumatra Mandheling</label></th>
+              <td id="origin-GC-006">Indonesia (ID)</td>
+              <td>Semilavado</td>
+              <td>Oscuro</td>
+              <td class="num" id="weight-GC-006"><data value="340">340 g</data></td>
+              <td class="num" id="price-GC-006"><data value="14.00">USD 14.00</data></td>
+              <td class="num" id="stock-GC-006"><data value="3">3 bolsas</data></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p id="catalog-empty" class="field-error" hidden>Ningún café coincide con los filtros. Use «Quitar filtros» para ver los 6.</p>
+    </fieldset>
+
+    <fieldset class="mt">
+      <legend>Molienda</legend>
+      <div class="choices">
+        <label class="choice" for="grind-whole"><input type="radio" id="grind-whole" name="grind" value="whole" required aria-describedby="err-grind" toolparamdescription="Molienda del café.">Grano entero</label>
+        <label class="choice" for="grind-espresso"><input type="radio" id="grind-espresso" name="grind" value="espresso" required aria-describedby="err-grind" toolparamdescription="Molienda del café.">Molido para espresso</label>
+        <label class="choice" for="grind-filter"><input type="radio" id="grind-filter" name="grind" value="filter" required aria-describedby="err-grind" toolparamdescription="Molienda del café.">Molido para filtro</label>
+        <label class="choice" for="grind-french_press"><input type="radio" id="grind-french_press" name="grind" value="french_press" required aria-describedby="err-grind" toolparamdescription="Molienda del café.">Molido grueso (prensa francesa)</label>
+      </div>
+      <span class="field-error" id="err-grind" data-error-for="grind" hidden></span>
+    </fieldset>
+
+    <div class="row-end">
+      <div class="field">
+        <label for="add-quantity">Cantidad de bolsas</label>
+        <input id="add-quantity" name="quantity" type="number" min="1" max="10" step="1" value="1" inputmode="numeric" required
+               aria-describedby="add-quantity-hint err-quantity"
+               toolparamdescription="Número entero de bolsas, de 1 a 10, sin superar las disponibles.">
+      </div>
+      <button type="submit" id="add-submit">Agregar al carrito</button>
+    </div>
+    <p class="hint below" id="add-quantity-hint">Entero de 1 a 10, sin superar las bolsas disponibles.</p>
+    <span class="field-error" id="err-quantity" data-error-for="quantity" hidden></span>
+    <p class="local-result below-result" id="add-result"></p>
+  </form>
+</section>
+
+<section class="box" id="cart" aria-labelledby="cart-title" data-units="0" data-subtotal-usd="0.00">
+  <div class="box-head"><h2 id="cart-title" tabindex="-1">Carrito</h2><span class="ref">#cart</span></div>
+  <p id="cart-empty">El carrito está vacío. Agregue cafés desde el <a href="#add-to-cart">formulario del catálogo</a>.</p>
+  <div class="table-wrap">
+    <table id="cart-table" hidden>
+      <caption>Líneas del carrito. Importes en USD.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Línea</th>
+          <th scope="col">Café</th>
+          <th scope="col">Molienda</th>
+          <th scope="col" class="num">Bolsas</th>
+          <th scope="col" class="num">Precio por bolsa</th>
+          <th scope="col" class="num">Importe</th>
+          <th scope="col"><span class="sr-only">Acción</span></th>
+        </tr>
+      </thead>
+      <tbody id="cart-lines"></tbody>
+      <tfoot>
+        <tr><th scope="row" colspan="5">Subtotal</th><td class="num" id="cart-subtotal"><data value="0.00">USD 0.00</data></td><td></td></tr>
+      </tfoot>
+    </table>
+  </div>
+</section>
+
+<section class="box" id="checkout" aria-labelledby="checkout-title" data-order-status="none">
+  <div class="box-head"><h2 id="checkout-title">Pedido</h2><span class="ref">#checkout</span></div>
+  <p class="prose">El pedido se hace en dos pasos. El paso 1 calcula el total sin cobrar. El paso 2 cobra y necesita la aprobación explícita de la persona usuaria.</p>
+
+  <form class="box" id="prepare-order" novalidate
+        aria-labelledby="prepare-title"
+        toolname="prepare_order"
+        tooldescription="Prepara un pedido con el contenido actual del carrito y los datos de entrega. Calcula el envío y el total exacto en USD y devuelve un número de pedido. No cobra nada: el pago se confirma después, con la aprobación de la persona usuaria."
+        toolautosubmit>
+    <div class="box-head"><h3 id="prepare-title">Paso 1. Preparar el pedido</h3><span class="ref">#prepare-order</span></div>
+    <div class="grid">
+      <div class="field">
+        <label for="p-full-name">Nombre y apellido</label>
+        <input id="p-full-name" name="full_name" type="text" autocomplete="name" required aria-describedby="err-full_name"
+               toolparamdescription="Nombre y apellido de quien recibe el pedido.">
+        <span class="field-error" id="err-full_name" data-error-for="full_name" hidden></span>
+      </div>
+      <div class="field">
+        <label for="p-email">Correo electrónico</label>
+        <input id="p-email" name="email" type="email" autocomplete="email" required aria-describedby="p-email-hint err-email"
+               toolparamdescription="Correo para enviar el comprobante.">
+        <span class="hint" id="p-email-hint">Recibe el comprobante. Formato nombre@dominio.tld</span>
+        <span class="field-error" id="err-email" data-error-for="email" hidden></span>
+      </div>
+    </div>
+    <fieldset class="mt">
+      <legend>Entrega</legend>
+      <div class="choices">
+        <label class="choice" for="p-method-shipping"><input type="radio" id="p-method-shipping" name="delivery_method" value="shipping" required aria-describedby="err-delivery_method" toolparamdescription="Forma de entrega del pedido.">Envío a domicilio (USD 5.00; gratis desde USD 40.00)</label>
+        <label class="choice" for="p-method-pickup"><input type="radio" id="p-method-pickup" name="delivery_method" value="pickup" required aria-describedby="err-delivery_method" toolparamdescription="Forma de entrega del pedido.">Retiro en tienda (sin costo)</label>
+      </div>
+      <span class="field-error" id="err-delivery_method" data-error-for="delivery_method" hidden></span>
+    </fieldset>
+    <div class="grid mt">
+      <div class="field">
+        <label for="p-address">Dirección de entrega</label>
+        <input id="p-address" name="address" type="text" autocomplete="street-address" aria-describedby="p-address-hint err-address"
+               toolparamdescription="Dirección completa. Obligatoria si la entrega es envío a domicilio.">
+        <span class="hint" id="p-address-hint">Obligatoria si elige envío a domicilio.</span>
+        <span class="field-error" id="err-address" data-error-for="address" hidden></span>
+      </div>
+      <div class="field">
+        <label for="p-date">Fecha de entrega</label>
+        <input id="p-date" name="delivery_date" type="text" pattern="\d{4}-\d{2}-\d{2}" placeholder="AAAA-MM-DD" autocomplete="off" spellcheck="false" required aria-describedby="p-date-hint err-delivery_date"
+               toolparamdescription="Fecha de entrega en formato AAAA-MM-DD, entre 2 y 30 días a partir de hoy.">
+        <span class="hint" id="p-date-hint">Formato AAAA-MM-DD, entre 2 y 30 días a partir de hoy.</span>
+        <span class="field-error" id="err-delivery_date" data-error-for="delivery_date" hidden></span>
+      </div>
+    </div>
+    <div class="field mt">
+      <label for="p-notes">Indicaciones (opcional)</label>
+      <textarea id="p-notes" name="notes" maxlength="500" toolparamdescription="Indicaciones opcionales para la entrega."></textarea>
+    </div>
+    <div class="actions">
+      <button type="submit" id="prepare-submit">Preparar pedido (sin cobro)</button>
+      <p class="local-result" id="prepare-result"></p>
+    </div>
+  </form>
+
+  <section class="summary" id="order-summary" aria-labelledby="summary-title" hidden>
+    <h3 id="summary-title">Resumen del pedido <code id="summary-id"></code></h3>
+    <dl class="dl" id="summary-list"></dl>
+  </section>
+
+  <form class="box box--consequential" id="confirm-order" novalidate
+        aria-labelledby="confirm-title"
+        toolname="confirm_order"
+        tooldescription="Confirma y paga el pedido preparado. Es la única acción con cargo real: el agente rellena el total aprobado por la persona usuaria y ella misma pulsa «Confirmar y pagar».">
+    <div class="box-head"><h3 id="confirm-title">Paso 2. Confirmar y pagar</h3><span class="ref">#confirm-order</span></div>
+    <p class="prose">Este paso cobra el pedido. Antes de enviarlo, la persona usuaria tiene que haber aprobado el total exacto. Escribir el total es la prueba de que se revisó.</p>
+    <fieldset id="confirm-fields" disabled>
+      <div class="row-end tight">
+        <div class="field field--total">
+          <label for="c-total">Total aprobado (USD)</label>
+          <input id="c-total" name="total_confirmation" type="text" inputmode="decimal" autocomplete="off" required
+                 aria-describedby="c-total-hint err-total_confirmation"
+                 toolparamdescription="Total exacto del pedido en USD, tal como lo aprobó la persona usuaria. Ejemplo: 31.00">
+        </div>
+        <button type="submit" id="confirm-submit" class="pay">Confirmar y pagar</button>
+      </div>
+      <p class="hint below" id="c-total-hint">Escriba el total del resumen, por ejemplo 31.00.</p>
+      <span class="field-error" id="err-total_confirmation" data-error-for="total_confirmation" hidden></span>
+    </fieldset>
+    <p class="local-result below-result" id="confirm-result">No hay ningún pedido preparado.</p>
+  </form>
+</section>
+
+<section class="box" id="policies" aria-labelledby="policies-title">
+  <div class="box-head"><h2 id="policies-title">Políticas para agentes</h2><span class="ref">#policies</span></div>
+  <dl class="dl">
+    <dt>Sin aprobación previa</dt><dd>Consultar y filtrar el catálogo, agregar y quitar cafés del carrito, preparar pedidos.</dd>
+    <dt>Con aprobación explícita</dt><dd>Confirmar y pagar. La persona usuaria aprueba el total exacto antes de cada pago.</dd>
+    <dt>Límites</dt><dd>Hasta 10 bolsas por café y pedido. Un pedido preparado vence a los 30 minutos y se anula si el carrito cambia.</dd>
+    <dt>Datos personales</dt><dd>Nombre, correo y, para envíos, dirección. Se usan solo para entregar el pedido.</dd>
+    <dt>Identificación</dt><dd>En el sitio publicado, los agentes se identifican con su User-Agent y, si pueden, con firmas HTTP (Web Bot Auth). La tienda no usa CAPTCHA.</dd>
+    <dt>Contacto humano</dt><dd><a href="mailto:soporte@granoclaro.example">soporte@granoclaro.example</a></dd>
+  </dl>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <p>Grano Claro es una tienda ficticia para demostrar diseño web orientado a agentes. Catálogo actualizado el <time datetime="2026-10-06">6 de octubre de 2026</time>. Interfaz para agentes, versión 1.0.</p>
+  <p class="meta" id="diagnostics">Diagnóstico de este navegador: pendiente.</p>
+</footer>
+
+</div>
+
+<script>
+(() => {
+  'use strict';
+
+  /* ---------- Constantes del negocio ---------- */
+  const MAX_PER_SKU = 10;
+  const SHIPPING_FEE_CENTS = 500;
+  const FREE_SHIPPING_FROM_CENTS = 4000;
+  const ORDER_TTL_MIN = 30;
+  const STORE_UTC_OFFSET_MIN = -360; // UTC−06:00
+  const STORAGE_KEY = 'granoclaro:v1';
+  const GRINDS = { whole: 'Grano entero', espresso: 'Molido para espresso', filter: 'Molido para filtro', french_press: 'Molido grueso (prensa francesa)' };
+  const ROASTS = { light: 'Claro', medium: 'Medio', dark: 'Oscuro' };
+  const METHODS = { shipping: 'Envío a domicilio', pickup: 'Retiro en tienda' };
+  const ORDER_STATUS = { pending_confirmation: 'pendiente de aprobación', confirmed: 'confirmado', expired: 'vencido', cancelled: 'anulado' };
+
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+  /* ---------- Utilidades numéricas (enteros en centavos, sin coma flotante) ---------- */
+  function toCents(v) {
+    if (typeof v === 'number') return Number.isFinite(v) && v >= 0 ? Math.round(v * 100) : NaN;
+    if (typeof v !== 'string') return NaN;
+    let s = v.trim().replace(/^(usd|us\$|\$)\s*/i, '').replace(/\s*usd$/i, '').replace(/\s+/g, '');
+    if (s.includes(',') && !s.includes('.')) s = s.replace(',', '.');
+    if (!/^\d+(\.\d{1,2})?$/.test(s)) return NaN;
+    const [int, frac = ''] = s.split('.');
+    return Number(int) * 100 + Number((frac + '00').slice(0, 2));
+  }
+  const money = (c) => `${Math.floor(c / 100)}.${String(c % 100).padStart(2, '0')}`;
+  const usd = (c) => `USD ${money(c)}`;
+  const bags = (n) => `${n} ${n === 1 ? 'bolsa' : 'bolsas'}`;
+  const isoNow = () => new Date().toISOString().replace(/\.\d{3}Z$/, 'Z');
+  const norm = (s) => String(s == null ? '' : s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+  const esc = (s) => String(s).replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+
+  /* ---------- Catálogo: se lee del HTML estático (misma fuente que el JSON-LD) ---------- */
+  const catalog = new Map();
+  $$('#catalog-table tbody tr[data-sku]').forEach((tr) => {
+    const d = tr.dataset;
+    catalog.set(d.sku, {
+      sku: d.sku, name: d.name, origin: d.origin, origin_name: d.originName, process: d.process,
+      roast: d.roast, weight_g: Number(d.weightG), price_cents: toCents(d.priceUsd), stock: Number(d.stock)
+    });
+  });
+  const productView = (p) => ({
+    sku: p.sku, name: p.name, origin: p.origin, origin_name: p.origin_name, process: p.process,
+    roast: p.roast, roast_label: ROASTS[p.roast], weight_g: p.weight_g,
+    price_usd: money(p.price_cents), stock: p.stock, available: p.stock > 0
+  });
+
+  /* ---------- Estado y persistencia ---------- */
+  const state = { cart: [], nextLine: 1, order: null, seq: 0 };
+  function save() {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ cart: state.cart, nextLine: state.nextLine, order: state.order })); }
+    catch (err) { /* Sin almacenamiento: el estado vive en memoria. */ }
+  }
+  function load() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return false;
+      const data = JSON.parse(raw);
+      if (Array.isArray(data.cart)) {
+        state.cart = data.cart.filter((l) => l && catalog.has(l.sku) && GRINDS[l.grind] && Number.isInteger(l.quantity) && l.quantity > 0);
+      }
+      if (Number.isInteger(data.nextLine) && data.nextLine > 0) state.nextLine = data.nextLine;
+      if (data.order && typeof data.order === 'object' && data.order.order_id) state.order = data.order;
+      return state.cart.length > 0 || Boolean(state.order);
+    } catch (err) { return false; }
+  }
+
+  /* ---------- Resultados: misma forma para formularios, JavaScript y WebMCP ---------- */
+  const success = (code, message, data) => (data === undefined ? { ok: true, code, message } : { ok: true, code, message, data });
+  function failure(code, message, hint, field) {
+    const r = { ok: false, code, message };
+    if (hint) r.hint = hint;
+    if (field) r.field = field;
+    return r;
+  }
+
+  const statusEl = $('#status');
+  function report(result, kindOverride) {
+    state.seq += 1;
+    const kind = kindOverride || (result.ok ? 'success' : 'error');
+    statusEl.dataset.state = kind;
+    statusEl.dataset.code = result.code;
+    statusEl.dataset.seq = String(state.seq);
+    $('[data-role="state"]', statusEl).textContent = { success: 'Hecho', error: 'Error', info: 'Aviso' }[kind];
+    $('[data-role="message"]', statusEl).textContent = result.ok || !result.hint ? result.message : `${result.message} ${result.hint}`;
+    $('[data-role="meta"]', statusEl).textContent = `Evento ${state.seq}. Código ${result.code}. ${isoNow()}`;
+    renderStateLine();
+    return result;
+  }
+  function showLocal(el, result) {
+    el.dataset.state = result.ok ? 'success' : 'error';
+    el.textContent = `${result.ok ? 'Hecho' : 'Error'}: ${result.message}${!result.ok && result.hint ? ' ' + result.hint : ''}`;
+  }
+  function clearFieldErrors(form) {
+    $$('[aria-invalid="true"]', form).forEach((el) => el.removeAttribute('aria-invalid'));
+    $$('[data-error-for]', form).forEach((el) => { el.textContent = ''; el.hidden = true; });
+  }
+  function setFieldError(form, result) {
+    clearFieldErrors(form);
+    if (!result.field) return;
+    const control = form.elements.namedItem(result.field);
+    const targets = control && typeof control.length === 'number' && !control.tagName ? Array.from(control) : control ? [control] : [];
+    targets.forEach((el) => el.setAttribute('aria-invalid', 'true'));
+    const errEl = $(`[data-error-for="${result.field}"]`, form);
+    if (errEl) { errEl.textContent = `${result.message}${result.hint ? ' ' + result.hint : ''}`; errEl.hidden = false; }
+  }
+  function respond(event, result) {
+    if (event && event.agentInvoked && typeof event.respondWith === 'function') {
+      try { event.respondWith(Promise.resolve(JSON.stringify(result))); } catch (err) { /* El navegador ya respondió. */ }
+    }
+  }
+  function formArgs(form) {
+    const out = {};
+    for (const [key, value] of new FormData(form).entries()) out[key] = typeof value === 'string' ? value : '';
+    return out;
+  }
+
+  /* ---------- Carrito ---------- */
+  function cartTotals() {
+    let units = 0, subtotal = 0;
+    for (const l of state.cart) { const p = catalog.get(l.sku); units += l.quantity; subtotal += p.price_cents * l.quantity; }
+    return { units, subtotal };
+  }
+  function cartView() {
+    const t = cartTotals();
+    return {
+      lines: state.cart.map((l) => {
+        const p = catalog.get(l.sku);
+        return { line_id: l.line_id, sku: l.sku, name: p.name, grind: l.grind, grind_label: GRINDS[l.grind], quantity: l.quantity, unit_price_usd: money(p.price_cents), line_total_usd: money(p.price_cents * l.quantity) };
+      }),
+      units: t.units, subtotal_usd: money(t.subtotal), currency: 'USD'
+    };
+  }
+  function invalidatePendingOrder(reason) {
+    const o = state.order;
+    if (o && o.status === 'pending_confirmation') {
+      o.status = 'cancelled';
+      o.cancel_reason = reason;
+      renderOrder();
+      return ` El pedido ${o.order_id} se anuló porque ${reason}; prepare uno nuevo.`;
+    }
+    return '';
+  }
+  function refreshExpiry() {
+    const o = state.order;
+    if (o && o.status === 'pending_confirmation' && Date.now() > Date.parse(o.expires_at)) {
+      o.status = 'expired';
+      save();
+      renderOrder();
+    }
+  }
+
+  /* ---------- Herramientas (núcleo compartido) ---------- */
+  function searchProducts(args = {}) {
+    const query = typeof args.query === 'string' ? args.query.trim() : '';
+    const origin = args.origin == null ? '' : String(args.origin).trim().toUpperCase();
+    const roast = args.roast == null ? '' : String(args.roast).trim().toLowerCase();
+    const inStock = [true, 'true', 'on', '1', 1].includes(args.in_stock_only);
+    const origins = Array.from(new Set(Array.from(catalog.values(), (p) => p.origin)));
+    if (origin && !origins.includes(origin)) return failure('ERR_VALIDATION', `Origen desconocido: «${args.origin}».`, `Use uno de: ${origins.join(', ')}, o déjelo vacío.`, 'origin');
+    if (roast && !ROASTS[roast]) return failure('ERR_VALIDATION', `Tueste desconocido: «${args.roast}».`, 'Use light, medium o dark, o déjelo vacío.', 'roast');
+    let maxCents = null;
+    const rawMax = args.max_price_usd;
+    if (rawMax !== undefined && rawMax !== null && String(rawMax).trim() !== '') {
+      maxCents = toCents(typeof rawMax === 'number' ? rawMax : String(rawMax));
+      if (!Number.isFinite(maxCents)) return failure('ERR_VALIDATION', `Precio máximo inválido: «${rawMax}».`, 'Escriba un monto en USD con punto decimal, por ejemplo 16.00.', 'max_price_usd');
+    }
+    const terms = norm(query).split(/\s+/).filter(Boolean);
+    const matches = Array.from(catalog.values()).filter((p) => {
+      if (origin && p.origin !== origin) return false;
+      if (roast && p.roast !== roast) return false;
+      if (maxCents !== null && p.price_cents > maxCents) return false;
+      if (inStock && p.stock <= 0) return false;
+      if (terms.length) {
+        const haystack = norm([p.sku, p.name, p.origin, p.origin_name, p.process, ROASTS[p.roast]].join(' '));
+        if (!terms.every((t) => haystack.includes(t))) return false;
+      }
+      return true;
+    });
+    applyFilterUI({ query, origin, roast, maxCents, inStock }, matches);
+    const message = matches.length
+      ? `${matches.length} de ${catalog.size} cafés coinciden: ${matches.map((p) => p.sku).join(', ')}.`
+      : `Ningún café coincide (0 de ${catalog.size}). Pruebe con menos filtros.`;
+    return success('SEARCH_OK', message, { count: matches.length, total: catalog.size, products: matches.map(productView) });
+  }
+
+  function addToCart(args = {}) {
+    const rawSku = args.sku == null ? '' : String(args.sku).trim();
+    if (!rawSku) return failure('ERR_VALIDATION', 'Falta elegir el café.', `Marque una fila del catálogo o envíe sku con uno de: ${Array.from(catalog.keys()).join(', ')}.`, 'sku');
+    const sku = rawSku.toUpperCase();
+    const p = catalog.get(sku);
+    if (!p) return failure('ERR_UNKNOWN_SKU', `No existe el SKU «${rawSku}».`, `SKU válidos: ${Array.from(catalog.keys()).join(', ')}.`, 'sku');
+    if (p.stock <= 0) return failure('ERR_OUT_OF_STOCK', `${p.name} (${p.sku}) está agotado.`, 'Elija otro café; search_products con in_stock_only=true lista los disponibles.', 'sku');
+    const grind = args.grind == null ? '' : String(args.grind).trim();
+    if (!GRINDS[grind]) return failure('ERR_VALIDATION', grind ? `Molienda desconocida: «${grind}».` : 'Falta elegir la molienda.', `Use una de: ${Object.keys(GRINDS).join(', ')}.`, 'grind');
+    const rawQty = args.quantity == null || String(args.quantity).trim() === '' ? 1 : args.quantity;
+    const qty = typeof rawQty === 'number' ? rawQty : Number(String(rawQty).trim());
+    if (!Number.isInteger(qty) || qty < 1) return failure('ERR_VALIDATION', `Cantidad inválida: «${args.quantity}».`, `Use un número entero de 1 a ${MAX_PER_SKU}.`, 'quantity');
+    const inCart = state.cart.filter((l) => l.sku === sku).reduce((sum, l) => sum + l.quantity, 0);
+    const limit = Math.min(p.stock, MAX_PER_SKU);
+    if (inCart + qty > limit) {
+      const room = Math.max(0, limit - inCart);
+      const why = p.stock < MAX_PER_SKU ? `quedan ${bags(p.stock)}` : `el máximo por pedido es ${bags(MAX_PER_SKU)}`;
+      return failure('ERR_STOCK', `No se pueden agregar ${bags(qty)} de ${p.name}: ${why} y ya hay ${inCart} en el carrito.`, room > 0 ? `Puede agregar como máximo ${room}.` : 'No se pueden agregar más bolsas de este café.', 'quantity');
+    }
+    let line = state.cart.find((l) => l.sku === sku && l.grind === grind);
+    if (line) line.quantity += qty;
+    else { line = { line_id: `L${state.nextLine++}`, sku, grind, quantity: qty }; state.cart.push(line); }
+    const note = invalidatePendingOrder('el carrito cambió');
+    save();
+    renderCart();
+    const t = cartTotals();
+    return success('CART_ADDED', `Se agregaron ${bags(qty)} de ${p.name}, ${GRINDS[grind].toLowerCase()}, en la línea ${line.line_id}. Carrito: ${bags(t.units)}, subtotal ${usd(t.subtotal)}.${note}`, { line_id: line.line_id, cart: cartView() });
+  }
+
+  function removeFromCart(args = {}) {
+    const raw = args.line_id == null ? '' : String(args.line_id).trim();
+    const id = raw.toUpperCase();
+    const idx = state.cart.findIndex((l) => l.line_id === id);
+    if (idx < 0) return failure('ERR_UNKNOWN_LINE', raw ? `No hay ninguna línea «${raw}» en el carrito.` : 'Falta line_id.', state.cart.length ? `Líneas actuales: ${state.cart.map((l) => l.line_id).join(', ')}.` : 'El carrito está vacío.', 'line_id');
+    const [removed] = state.cart.splice(idx, 1);
+    const p = catalog.get(removed.sku);
+    const note = invalidatePendingOrder('el carrito cambió');
+    save();
+    renderCart();
+    const t = cartTotals();
+    return success('CART_REMOVED', `Se quitó la línea ${removed.line_id} (${bags(removed.quantity)} de ${p.name}). Carrito: ${bags(t.units)}, subtotal ${usd(t.subtotal)}.${note}`, { cart: cartView() });
+  }
+
+  function getCart() {
+    refreshExpiry();
+    const t = cartTotals();
+    const pending = state.order && state.order.status === 'pending_confirmation' ? orderView() : null;
+    return success('CART_OK', `Carrito: ${bags(t.units)}, subtotal ${usd(t.subtotal)}.${pending ? ` Pedido pendiente: ${pending.order_id}, total USD ${pending.total_usd}.` : ''}`, { cart: cartView(), pending_order: pending });
+  }
+
+  function storeToday() {
+    const shifted = new Date(Date.now() + STORE_UTC_OFFSET_MIN * 60000);
+    return new Date(Date.UTC(shifted.getUTCFullYear(), shifted.getUTCMonth(), shifted.getUTCDate()));
+  }
+  const isoDate = (d) => d.toISOString().slice(0, 10);
+  function deliveryRange() {
+    const today = storeToday();
+    const min = new Date(today); min.setUTCDate(min.getUTCDate() + 2);
+    const max = new Date(today); max.setUTCDate(max.getUTCDate() + 30);
+    return { min: isoDate(min), max: isoDate(max) };
+  }
+
+  function prepareOrder(args = {}) {
+    refreshExpiry();
+    if (!state.cart.length) return failure('ERR_CART_EMPTY', 'El carrito está vacío.', 'Agregue al menos un café con add_to_cart antes de preparar el pedido.');
+    const fullName = String(args.full_name == null ? '' : args.full_name).trim();
+    if (fullName.length < 2) return failure('ERR_VALIDATION', 'Falta el nombre de quien recibe el pedido.', 'Escriba nombre y apellido.', 'full_name');
+    const email = String(args.email == null ? '' : args.email).trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return failure('ERR_VALIDATION', email ? `Correo inválido: «${email}».` : 'Falta el correo.', 'Formato esperado: nombre@dominio.tld.', 'email');
+    const method = String(args.delivery_method == null ? '' : args.delivery_method).trim();
+    if (!METHODS[method]) return failure('ERR_VALIDATION', method ? `Forma de entrega desconocida: «${method}».` : 'Falta la forma de entrega.', 'Use shipping (envío a domicilio) o pickup (retiro en tienda).', 'delivery_method');
+    const address = String(args.address == null ? '' : args.address).trim();
+    if (method === 'shipping' && address.length < 5) return failure('ERR_VALIDATION', 'Falta la dirección de entrega.', 'Es obligatoria cuando la entrega es shipping (envío a domicilio).', 'address');
+    const date = String(args.delivery_date == null ? '' : args.delivery_date).trim();
+    const range = deliveryRange();
+    const valid = /^\d{4}-\d{2}-\d{2}$/.test(date) && !Number.isNaN(Date.parse(`${date}T00:00:00Z`)) && isoDate(new Date(`${date}T00:00:00Z`)) === date;
+    if (!valid) return failure('ERR_VALIDATION', date ? `Fecha inválida: «${date}».` : 'Falta la fecha de entrega.', `Use el formato AAAA-MM-DD, entre ${range.min} y ${range.max}.`, 'delivery_date');
+    if (date < range.min || date > range.max) return failure('ERR_VALIDATION', `La fecha ${date} está fuera del rango de entrega.`, `Elija una fecha entre ${range.min} y ${range.max}.`, 'delivery_date');
+    const perSku = new Map();
+    for (const l of state.cart) perSku.set(l.sku, (perSku.get(l.sku) || 0) + l.quantity);
+    for (const [sku, qty] of perSku) {
+      const p = catalog.get(sku);
+      if (qty > p.stock) return failure('ERR_STOCK', `El carrito pide ${bags(qty)} de ${p.name}, pero quedan ${bags(p.stock)}.`, 'Quite bolsas de ese café y vuelva a preparar el pedido.');
+    }
+    const t = cartTotals();
+    const shipping = method === 'pickup' || t.subtotal >= FREE_SHIPPING_FROM_CENTS ? 0 : SHIPPING_FEE_CENTS;
+    const now = Date.now();
+    const replaced = state.order && state.order.status === 'pending_confirmation' ? state.order.order_id : null;
+    state.order = {
+      order_id: `GC-ORD-${now.toString(36).toUpperCase().slice(-6)}`,
+      status: 'pending_confirmation',
+      created_at: new Date(now).toISOString().replace(/\.\d{3}Z$/, 'Z'),
+      expires_at: new Date(now + ORDER_TTL_MIN * 60000).toISOString().replace(/\.\d{3}Z$/, 'Z'),
+      lines: cartView().lines,
+      subtotal_cents: t.subtotal,
+      shipping_cents: shipping,
+      total_cents: t.subtotal + shipping,
+      delivery: { method, method_label: METHODS[method], date, address: method === 'shipping' ? address : null },
+      notes: String(args.notes == null ? '' : args.notes).trim().slice(0, 500),
+      payment: 'not_charged'
+    };
+    save();
+    renderOrder();
+    const o = state.order;
+    return success('ORDER_PREPARED', `Pedido ${o.order_id} preparado: total ${usd(o.total_cents)} (subtotal ${usd(o.subtotal_cents)} + envío ${usd(o.shipping_cents)}). No se ha cobrado nada. Para pagar, la persona usuaria debe aprobar ese total exacto. Vence ${o.expires_at}.${replaced ? ` Reemplaza al pedido ${replaced}.` : ''}`, { order: orderView() });
+  }
+
+  function confirmOrder(args = {}) {
+    refreshExpiry();
+    const o = state.order;
+    if (!o) return failure('ERR_NO_PENDING_ORDER', 'No hay ningún pedido preparado.', 'Prepare el pedido en el paso 1 (#prepare-order).');
+    if (o.status === 'confirmed') return success('ORDER_ALREADY_CONFIRMED', `El pedido ${o.order_id} ya estaba confirmado; no se cobró de nuevo.`, { order: orderView() });
+    if (o.status === 'expired') return failure('ERR_ORDER_EXPIRED', `El pedido ${o.order_id} venció (${o.expires_at}).`, 'Prepare un pedido nuevo en el paso 1.');
+    if (o.status === 'cancelled') return failure('ERR_NO_PENDING_ORDER', `El pedido ${o.order_id} se anuló porque ${o.cancel_reason}.`, 'Prepare un pedido nuevo en el paso 1.');
+    const typed = toCents(String(args.total_confirmation == null ? '' : args.total_confirmation));
+    if (!Number.isFinite(typed)) return failure('ERR_VALIDATION', 'Falta el total aprobado o no es un monto válido.', `Escriba el total del pedido: ${money(o.total_cents)}.`, 'total_confirmation');
+    if (typed !== o.total_cents) return failure('ERR_TOTAL_MISMATCH', `El total escrito (${usd(typed)}) no coincide con el del pedido (${usd(o.total_cents)}).`, `Confirme con la persona usuaria y escriba ${money(o.total_cents)}.`, 'total_confirmation');
+    o.status = 'confirmed';
+    o.payment = 'charged_simulated';
+    o.confirmed_at = isoNow();
+    for (const l of o.lines) { const p = catalog.get(l.sku); p.stock = Math.max(0, p.stock - l.quantity); }
+    state.cart = [];
+    save();
+    renderStock();
+    renderCart();
+    renderOrder();
+    return success('ORDER_CONFIRMED', `Pedido ${o.order_id} confirmado y pagado (simulado): ${usd(o.total_cents)}. ${o.delivery.method_label} el ${o.delivery.date}.`, { order: orderView() });
+  }
+
+  function orderView() {
+    const o = state.order;
+    if (!o) return null;
+    return {
+      order_id: o.order_id, status: o.status, created_at: o.created_at, expires_at: o.expires_at,
+      confirmed_at: o.confirmed_at || null, lines: o.lines,
+      subtotal_usd: money(o.subtotal_cents), shipping_usd: money(o.shipping_cents), total_usd: money(o.total_cents), currency: 'USD',
+      delivery: o.delivery, payment: o.payment, requires_user_approval: o.status === 'pending_confirmation'
+    };
+  }
+
+  /* ---------- Interfaz: siempre refleja el estado, venga la acción de donde venga ---------- */
+  function applyFilterUI(f, matches) {
+    const form = $('#filters');
+    form.elements.namedItem('query').value = f.query;
+    form.elements.namedItem('origin').value = f.origin;
+    form.elements.namedItem('roast').value = f.roast;
+    form.elements.namedItem('max_price_usd').value = f.maxCents === null ? '' : money(f.maxCents);
+    form.elements.namedItem('in_stock_only').checked = f.inStock;
+    const keep = new Set(matches.map((p) => p.sku));
+    $$('#catalog-table tbody tr[data-sku]').forEach((tr) => {
+      const hidden = !keep.has(tr.dataset.sku);
+      tr.hidden = hidden;
+      const radio = $('input[name="sku"]', tr);
+      if (hidden && radio.checked) radio.checked = false;
+    });
+    $('#catalog-empty').hidden = keep.size > 0;
+    const res = $('#filters-result');
+    res.dataset.state = '';
+    res.textContent = `Mostrando ${keep.size} de ${catalog.size} cafés.`;
+    try {
+      const params = new URLSearchParams();
+      if (f.query) params.set('query', f.query);
+      if (f.origin) params.set('origin', f.origin);
+      if (f.roast) params.set('roast', f.roast);
+      if (f.maxCents !== null) params.set('max_price_usd', money(f.maxCents));
+      if (f.inStock) params.set('in_stock_only', 'true');
+      const qs = params.toString();
+      history.replaceState(null, '', `${location.pathname}${qs ? `?${qs}` : ''}${location.hash}`);
+    } catch (err) { /* Entorno sin history: el filtro igual se aplica. */ }
+  }
+
+  function renderStateLine() {
+    const t = cartTotals();
+    const o = state.order;
+    const orderText = o ? `${o.order_id}, ${ORDER_STATUS[o.status]}, total ${usd(o.total_cents)}` : 'ninguno';
+    $('#state-line').textContent = `Carrito: ${bags(t.units)}, subtotal ${usd(t.subtotal)}. Último pedido: ${orderText}.`;
+  }
+
+  function renderCart() {
+    const rows = state.cart.map((l) => {
+      const p = catalog.get(l.sku);
+      const tr = document.createElement('tr');
+      tr.id = `cart-line-${l.line_id}`;
+      tr.dataset.line = l.line_id;
+      tr.dataset.sku = l.sku;
+      tr.innerHTML =
+        `<td><code>${l.line_id}</code></td>` +
+        `<th scope="row">${esc(p.name)}</th>` +
+        `<td>${esc(GRINDS[l.grind])}</td>` +
+        `<td class="num"><data value="${l.quantity}">${l.quantity}</data></td>` +
+        `<td class="num"><data value="${money(p.price_cents)}">${usd(p.price_cents)}</data></td>` +
+        `<td class="num"><data value="${money(p.price_cents * l.quantity)}">${usd(p.price_cents * l.quantity)}</data></td>` +
+        `<td><button type="button" class="secondary small" id="remove-${l.line_id}" data-line="${l.line_id}">Quitar<span class="sr-only"> línea ${l.line_id}: ${esc(p.name)}, ${esc(GRINDS[l.grind].toLowerCase())}</span></button></td>`;
+      return tr;
+    });
+    $('#cart-lines').replaceChildren(...rows);
+    const t = cartTotals();
+    $('#cart-table').hidden = state.cart.length === 0;
+    $('#cart-empty').hidden = state.cart.length > 0;
+    $('#cart-subtotal').innerHTML = `<data value="${money(t.subtotal)}">${usd(t.subtotal)}</data>`;
+    const section = $('#cart');
+    section.dataset.units = String(t.units);
+    section.dataset.subtotalUsd = money(t.subtotal);
+    updateQuantityLimit();
+    renderStateLine();
+  }
+
+  function renderStock() {
+    for (const p of catalog.values()) {
+      const tr = $(`#product-${p.sku}`);
+      if (!tr) continue;
+      tr.dataset.stock = String(p.stock);
+      tr.classList.toggle('is-out', p.stock <= 0);
+      $(`#stock-${p.sku}`).innerHTML = p.stock > 0 ? `<data value="${p.stock}">${bags(p.stock)}</data>` : '<data value="0">Agotado</data>';
+      const radio = $(`#sku-${p.sku}`);
+      radio.disabled = p.stock <= 0;
+      if (radio.disabled) radio.checked = false;
+    }
+    updateQuantityLimit();
+  }
+
+  function updateQuantityLimit() {
+    const picked = $('input[name="sku"]:checked');
+    const input = $('#add-quantity');
+    const hint = $('#add-quantity-hint');
+    if (!picked) { input.max = String(MAX_PER_SKU); hint.textContent = `Entero de 1 a ${MAX_PER_SKU}, sin superar las bolsas disponibles.`; return; }
+    const p = catalog.get(picked.value);
+    const inCart = state.cart.filter((l) => l.sku === p.sku).reduce((sum, l) => sum + l.quantity, 0);
+    const room = Math.max(0, Math.min(p.stock, MAX_PER_SKU) - inCart);
+    input.max = String(Math.max(1, room));
+    hint.textContent = room > 0
+      ? `${p.name}: puede agregar de 1 a ${room} ${room === 1 ? 'bolsa' : 'bolsas'}${inCart ? ` (ya hay ${inCart} en el carrito)` : ''}.`
+      : `${p.name}: no se pueden agregar más bolsas.`;
+  }
+
+  function renderOrder() {
+    const o = state.order;
+    const summary = $('#order-summary');
+    const fields = $('#confirm-fields');
+    const button = $('#confirm-submit');
+    const result = $('#confirm-result');
+    $('#checkout').dataset.orderStatus = o ? o.status : 'none';
+    if (!o) {
+      summary.hidden = true;
+      fields.disabled = true;
+      button.textContent = 'Confirmar y pagar';
+      result.dataset.state = '';
+      result.textContent = 'No hay ningún pedido preparado.';
+      renderStateLine();
+      return;
+    }
+    summary.hidden = false;
+    $('#summary-id').textContent = o.order_id;
+    const list = document.createElement('ul');
+    o.lines.forEach((l) => {
+      const li = document.createElement('li');
+      li.textContent = `${l.line_id}: ${bags(l.quantity)} de ${l.name}, ${l.grind_label.toLowerCase()}, USD ${l.line_total_usd}`;
+      list.append(li);
+    });
+    const entries = [
+      ['Estado', ORDER_STATUS[o.status] + (o.status === 'cancelled' && o.cancel_reason ? ` (${o.cancel_reason})` : '')],
+      ['Cafés', list],
+      ['Subtotal', usd(o.subtotal_cents)],
+      ['Envío', usd(o.shipping_cents)],
+      ['Total', usd(o.total_cents)],
+      ['Entrega', `${o.delivery.method_label}, ${o.delivery.date}${o.delivery.address ? `, ${o.delivery.address}` : ''}`],
+      ['Cobro', o.payment === 'charged_simulated' ? `Realizado (simulado) el ${o.confirmed_at}` : 'No realizado'],
+      o.status === 'pending_confirmation' ? ['Vence', o.expires_at] : null
+    ].filter(Boolean);
+    $('#summary-list').replaceChildren(...entries.flatMap(([label, value]) => {
+      const dt = document.createElement('dt');
+      dt.textContent = label;
+      const dd = document.createElement('dd');
+      if (typeof value === 'string') dd.textContent = value; else dd.append(value);
+      if (label === 'Total') { dd.id = 'summary-total'; dd.className = 'total'; }
+      return [dt, dd];
+    }));
+    const pending = o.status === 'pending_confirmation';
+    fields.disabled = !pending;
+    button.textContent = pending ? `Confirmar y pagar ${usd(o.total_cents)}` : 'Confirmar y pagar';
+    result.dataset.state = '';
+    result.textContent = pending
+      ? `Pedido ${o.order_id} listo para confirmar. Necesita la aprobación explícita de la persona usuaria.`
+      : o.status === 'confirmed' ? `Pedido ${o.order_id} confirmado.` : `Pedido ${o.order_id} ${ORDER_STATUS[o.status]}. Prepare uno nuevo en el paso 1.`;
+    if (!pending) $('#c-total').value = '';
+    renderStateLine();
+  }
+
+  function fillForm(form, args) {
+    for (const [key, value] of Object.entries(args)) {
+      const control = form.elements.namedItem(key);
+      if (control && value != null) control.value = String(value);
+    }
+  }
+
+  /* ---------- Formularios (personas y agentes que usan el DOM o WebMCP declarativo) ---------- */
+  function wire(formId, resultId, run) {
+    const form = $(formId);
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const result = run(formArgs(form));
+      if (result.ok) clearFieldErrors(form); else setFieldError(form, result);
+      if (resultId) showLocal($(resultId), result);
+      report(result);
+      respond(event, result);
+    });
+  }
+  wire('#filters', null, (args) => {
+    const r = searchProducts(args);
+    if (!r.ok) showLocal($('#filters-result'), r);
+    return r;
+  });
+  wire('#add-to-cart', '#add-result', addToCart);
+  wire('#prepare-order', '#prepare-result', prepareOrder);
+  wire('#confirm-order', '#confirm-result', confirmOrder);
+
+  $('#filters-clear').addEventListener('click', () => {
+    clearFieldErrors($('#filters'));
+    report(searchProducts({}));
+  });
+  $('#add-to-cart').addEventListener('change', (event) => {
+    if (event.target.name === 'sku') updateQuantityLimit();
+  });
+  $('#cart-lines').addEventListener('click', (event) => {
+    const button = event.target.closest('button[data-line]');
+    if (!button) return;
+    report(removeFromCart({ line_id: button.dataset.line }));
+    $('#cart-title').focus();
+  });
+
+  /* ---------- API JavaScript para agentes que ejecutan código ---------- */
+  const TOOLS = JSON.parse($('#agent-tools').textContent).tools;
+  const HANDLERS = { search_products: searchProducts, add_to_cart: addToCart, remove_from_cart: removeFromCart, get_cart: getCart, prepare_order: prepareOrder };
+  const SILENT = new Set(['get_cart']);
+  async function call(name, args) {
+    if (name === 'confirm_order') return failure('ERR_HUMAN_STEP', 'confirm_order no está disponible por JavaScript.', 'La persona usuaria confirma en el formulario visible #confirm-order (paso 2).');
+    const handler = HANDLERS[name];
+    if (!handler) return failure('ERR_UNKNOWN_TOOL', `Herramienta desconocida: «${name}».`, `Disponibles: ${Object.keys(HANDLERS).join(', ')}.`);
+    const input = args == null ? {} : args;
+    if (typeof input !== 'object' || Array.isArray(input)) return failure('ERR_VALIDATION', 'Los argumentos deben ser un objeto.', 'Ejemplo: {"sku": "GC-004", "grind": "filter", "quantity": 2}');
+    const result = handler(input);
+    if (name === 'prepare_order' && result.ok) fillForm($('#prepare-order'), input);
+    return SILENT.has(name) ? result : report(result);
+  }
+  Object.defineProperty(window, 'granoClaro', {
+    enumerable: true,
+    value: Object.freeze({
+      version: '1.0',
+      tools: TOOLS.filter((t) => t.binding.javascript).map(({ name, description, inputSchema, annotations }) => ({ name, description, inputSchema, annotations })),
+      call,
+      snapshot: () => ({ cart: cartView(), order: orderView(), last_event: { seq: state.seq, state: statusEl.dataset.state, code: statusEl.dataset.code } })
+    })
+  });
+
+  /* ---------- WebMCP: herramientas imperativas (las declarativas son los formularios) ---------- */
+  async function setupWebMCP() {
+    const mc = document.modelContext || navigator.modelContext;
+    const diag = $('#diagnostics');
+    if (!mc || typeof mc.registerTool !== 'function') {
+      diag.textContent = 'Diagnóstico de este navegador: no expone WebMCP; los formularios y la API JavaScript funcionan igual.';
+      return;
+    }
+    const registered = [];
+    const errors = [];
+    for (const tool of TOOLS.filter((t) => t.binding.webmcp === 'imperative')) {
+      try {
+        await mc.registerTool({
+          name: tool.name,
+          description: tool.description,
+          inputSchema: tool.inputSchema,
+          annotations: tool.annotations,
+          execute: async (args) => JSON.stringify(await call(tool.name, args || {}))
+        });
+        registered.push(tool.name);
+      } catch (err) {
+        errors.push(`${tool.name} (${err && err.message ? err.message : err})`);
+      }
+    }
+    if (typeof mc.addEventListener === 'function') {
+      mc.addEventListener('toolactivated', (event) => {
+        if (event.toolName === 'confirm_order') {
+          report(success('AWAITING_USER', 'Un agente rellenó la confirmación de pago. Revise el total y pulse «Confirmar y pagar» solo si está de acuerdo.'), 'info');
+        }
+      });
+      mc.addEventListener('toolcancel', (event) => {
+        report(success('TOOL_CANCELLED', `Se canceló la herramienta ${event.toolName}.`), 'info');
+      });
+    }
+    diag.textContent = `Diagnóstico de este navegador: WebMCP disponible. Registradas por script: ${registered.join(', ') || 'ninguna'}.${errors.length ? ` Errores: ${errors.join('; ')}.` : ''} Los formularios se exponen de forma declarativa.`;
+  }
+
+  /* ---------- Arranque ---------- */
+  function init() {
+    const restored = load();
+    const range = deliveryRange();
+    const date = $('#p-date');
+    date.dataset.min = range.min;
+    date.dataset.max = range.max;
+    $('#p-date-hint').textContent = `Formato AAAA-MM-DD, entre ${range.min} y ${range.max}.`;
+    renderCart();
+    renderOrder();
+    refreshExpiry();
+    const params = new URLSearchParams(location.search);
+    const filterKeys = ['query', 'origin', 'roast', 'max_price_usd', 'in_stock_only'];
+    if (filterKeys.some((k) => params.has(k))) {
+      const args = {};
+      filterKeys.forEach((k) => { if (params.has(k)) args[k] = params.get(k); });
+      report(searchProducts(args));
+    } else if (restored) {
+      const t = cartTotals();
+      report(success('STATE_RESTORED', `Se recuperó el estado guardado en este navegador: ${bags(t.units)} en el carrito${state.order ? `, pedido ${state.order.order_id} ${ORDER_STATUS[state.order.status]}` : ''}.`), 'info');
+    }
+    document.documentElement.dataset.ready = 'true';
+    setupWebMCP();
+  }
+  init();
+})();
+</script>
+</body>
+</html>

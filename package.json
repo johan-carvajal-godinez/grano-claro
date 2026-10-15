@@ -1,0 +1,18 @@
+{
+  "name": "grano-claro",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Tienda de café de demostración para personas y agentes de IA (implementación de referencia).",
+  "scripts": {
+    "build": "python3 build/build.py",
+    "audit": "python3 tests/auditar_agentes.py",
+    "test": "python3 tests/ejecutar_todo.py"
+  },
+  "devDependencies": {
+    "@fontsource/atkinson-hyperlegible-mono": "5.3.0",
+    "@fontsource/atkinson-hyperlegible-next": "5.3.0",
+    "axe-core": "4.14.0"
+  },
+  "license": "MIT",
+  "author": "Johan Carvajal Godínez"
+}

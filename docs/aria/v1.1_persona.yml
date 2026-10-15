@@ -1,0 +1,417 @@
+- banner:
+  - heading "Grano Claro" [level=1]
+  - paragraph: "Tienda de café en una sola página: una persona puede comprar directamente y un agente de software puede comprar en su nombre."
+  - paragraph:
+    - strong: "Nuevo:"
+    - text: 7 cafés de Costa Rica, cada uno de una región cafetalera distinta, con variedades como Villa Sarchí, Villalobos y Geisha.
+    - link "Conozca las variedades":
+      - /url: "#variety-guide"
+    - text: .
+  - paragraph:
+    - strong: "Demostración:"
+    - text: los pedidos son simulados y no se cobra nada.
+  - group "Navegar como":
+    - text: Navegar como
+    - radio "Persona" [checked]
+    - text: Persona Tarjetas con variedad, proceso y notas de cata.
+    - radio "Agente"
+    - text: Agente Tabla con SKU, herramientas, consola y datos estructurados.
+    - paragraph: "Las dos vistas comparten catálogo, carrito y pedido: cambiar de vista no borra nada."
+    - paragraph
+  - navigation "Secciones de la página":
+    - list:
+      - listitem:
+        - link "Catálogo":
+          - /url: "#catalog"
+      - listitem:
+        - link "Variedades":
+          - /url: "#variety-guide"
+      - listitem:
+        - link "Carrito":
+          - /url: "#cart"
+      - listitem:
+        - link "Pedido":
+          - /url: "#checkout"
+      - listitem:
+        - link "Políticas":
+          - /url: "#policies"
+- main:
+  - region "Estado":
+    - heading "Estado" [level=2]
+    - status: Listo La página está lista. Todavía no se ha hecho ninguna acción.
+    - paragraph: "Carrito: 0 bolsas, subtotal USD 0.00. Último pedido: ninguno."
+  - region "Catálogo":
+    - heading "Catálogo" [level=2]
+    - paragraph: 13 cafés de especialidad en bolsas selladas, 7 de ellos de Costa Rica. Precio por bolsa en USD, impuestos incluidos. Envío a domicilio USD 5.00, gratis desde USD 40.00; retiro en tienda sin costo.
+    - search "Filtrar el catálogo":
+      - heading "Filtrar el catálogo" [level=3]
+      - text: Texto
+      - searchbox "Texto"
+      - text: "Nombre, región, país, variedad, proceso o notas. Ejemplo: honey. Origen"
+      - combobox "Origen":
+        - option "Cualquier origen" [selected]
+        - option "Brasil (BR)"
+        - option "Colombia (CO)"
+        - option "Costa Rica (CR)"
+        - option "Etiopía (ET)"
+        - option "Guatemala (GT)"
+        - option "Indonesia (ID)"
+        - option "Kenia (KE)"
+      - text: Variedad
+      - combobox "Variedad":
+        - option "Cualquier variedad" [selected]
+        - option "Bourbon"
+        - option "Castillo"
+        - option "Catuaí"
+        - option "Caturra"
+        - option "Centroamericano (H1)"
+        - option "Costa Rica 95"
+        - option "Geisha"
+        - option "Mundo Novo"
+        - option "SL28"
+        - option "SL34"
+        - option "Variedades locales"
+        - option "Villa Sarchí"
+        - option "Villalobos"
+      - text: Tueste
+      - combobox "Tueste":
+        - option "Cualquier tueste" [selected]
+        - option "Claro"
+        - option "Medio"
+        - option "Oscuro"
+      - text: Precio máximo (USD)
+      - spinbutton "Precio máximo (USD)"
+      - text: "Por bolsa, con punto decimal. Ejemplo: 16.00"
+      - checkbox "Solo cafés disponibles"
+      - text: Solo cafés disponibles
+      - button "Aplicar filtros"
+      - button "Quitar filtros"
+      - paragraph: Mostrando 13 de 13 cafés.
+    - form "Agregar al carrito":
+      - heading "Agregar al carrito" [level=3]
+      - group "Café (elija una tarjeta)":
+        - text: Café (elija una tarjeta)
+        - heading "De Costa Rica 7 cafés" [level=4]
+        - list:
+          - listitem:
+            - text: Costa Rica
+            - heading "Dota" [level=5]
+            - paragraph: Región Los Santos · 1750 m
+            - term: Variedades
+            - definition: Caturra y Catuaí
+            - term: Proceso
+            - definition: Lavado
+            - term: Tueste
+            - definition: Medio
+            - term: Notas
+            - definition: Chocolate, naranja y acidez brillante.
+            - paragraph: USD 16.50
+            - paragraph: Bolsa de 340 g · quedan 14 bolsas
+            - button "Elegir Dota, Costa Rica, 340 g, USD 16.50"
+          - listitem:
+            - text: Costa Rica
+            - heading "Sarchí" [level=5]
+            - paragraph: Región Valle Occidental · 1450 m
+            - term: Variedad
+            - definition: Villa Sarchí
+            - term: Proceso
+            - definition: Honey amarillo
+            - term: Tueste
+            - definition: Claro
+            - term: Notas
+            - definition: Panela, durazno y miel.
+            - paragraph: USD 18.00
+            - paragraph: Bolsa de 340 g · quedan 9 bolsas
+            - button "Elegir Sarchí, Costa Rica, 340 g, USD 18.00"
+          - listitem:
+            - text: Costa Rica
+            - heading "Tres Ríos" [level=5]
+            - paragraph: Región Valle Central · 1500 m
+            - term: Variedad
+            - definition: Villalobos
+            - term: Proceso
+            - definition: Lavado
+            - term: Tueste
+            - definition: Medio
+            - term: Notas
+            - definition: Caramelo, almendra y manzana roja.
+            - paragraph: USD 17.00
+            - paragraph: Bolsa de 340 g · quedan 11 bolsas
+            - button "Elegir Tres Ríos, Costa Rica, 340 g, USD 17.00"
+          - listitem:
+            - text: Costa Rica
+            - heading "Orosi" [level=5]
+            - paragraph: Región Turrialba · 1200 m
+            - term: Variedad
+            - definition: Centroamericano (H1)
+            - term: Proceso
+            - definition: Lavado
+            - term: Tueste
+            - definition: Medio
+            - term: Notas
+            - definition: Cacao, nuez y cuerpo medio.
+            - paragraph: USD 14.50
+            - paragraph: Bolsa de 340 g · quedan 16 bolsas
+            - button "Elegir Orosi, Costa Rica, 340 g, USD 14.50"
+          - listitem:
+            - text: Costa Rica
+            - heading "Rivas" [level=5]
+            - paragraph: Región Pérez Zeledón · 1650 m
+            - term: Variedad
+            - definition: Geisha
+            - term: Proceso
+            - definition: Natural
+            - term: Tueste
+            - definition: Claro
+            - term: Notas
+            - definition: Jazmín, frutos rojos y bergamota.
+            - paragraph: USD 26.00
+            - paragraph: Bolsa de 250 g · quedan 2 bolsas
+            - button "Elegir Rivas, Costa Rica, 250 g, USD 26.00"
+          - listitem:
+            - text: Costa Rica
+            - heading "San Vito" [level=5]
+            - paragraph: Región Coto Brus · 1300 m
+            - term: Variedad
+            - definition: Catuaí
+            - term: Proceso
+            - definition: Honey rojo
+            - term: Tueste
+            - definition: Medio
+            - term: Notas
+            - definition: Cereza, panela y cuerpo sedoso.
+            - paragraph: USD 16.00
+            - paragraph: Bolsa de 340 g · quedan 7 bolsas
+            - button "Elegir San Vito, Costa Rica, 340 g, USD 16.00"
+          - listitem:
+            - text: Costa Rica
+            - heading "Hojancha" [level=5]
+            - paragraph: Región Zona Norte · 1000 m
+            - term: Variedad
+            - definition: Costa Rica 95
+            - term: Proceso
+            - definition: Lavado
+            - term: Tueste
+            - definition: Oscuro
+            - term: Notas
+            - definition: Chocolate amargo, especias y cuerpo pleno.
+            - paragraph: USD 13.50
+            - paragraph: Bolsa de 500 g · quedan 18 bolsas
+            - button "Elegir Hojancha, Costa Rica, 500 g, USD 13.50"
+        - heading "De otros orígenes 6 cafés" [level=4]
+        - list:
+          - listitem:
+            - text: Colombia
+            - heading "Huila" [level=5]
+            - term: Variedades
+            - definition: Caturra y Castillo
+            - term: Proceso
+            - definition: Lavado
+            - term: Tueste
+            - definition: Medio
+            - term: Notas
+            - definition: Panela, mandarina y cacao.
+            - paragraph: USD 14.50
+            - paragraph: Bolsa de 340 g · quedan 12 bolsas
+            - button "Elegir Huila, Colombia, 340 g, USD 14.50"
+          - listitem:
+            - text: Etiopía
+            - heading "Yirgacheffe" [level=5]
+            - term: Variedad
+            - definition: Variedades locales
+            - term: Proceso
+            - definition: Lavado
+            - term: Tueste
+            - definition: Claro
+            - term: Notas
+            - definition: Bergamota, jazmín y limón.
+            - paragraph: USD 17.00
+            - paragraph: Bolsa de 340 g · quedan 8 bolsas
+            - button "Elegir Yirgacheffe, Etiopía, 340 g, USD 17.00"
+          - listitem:
+            - text: Guatemala
+            - heading "Huehuetenango" [level=5]
+            - term: Variedades
+            - definition: Bourbon y Caturra
+            - term: Proceso
+            - definition: Lavado
+            - term: Tueste
+            - definition: Oscuro
+            - term: Notas
+            - definition: Chocolate amargo y nuez.
+            - paragraph: USD 13.00
+            - paragraph: Bolsa de 340 g · agotado
+            - button "Agotado Huehuetenango, Guatemala, 340 g, USD 13.00" [disabled]
+          - listitem:
+            - text: Kenia
+            - heading "Nyeri" [level=5]
+            - term: Variedades
+            - definition: SL28 y SL34
+            - term: Proceso
+            - definition: Lavado
+            - term: Tueste
+            - definition: Claro
+            - term: Notas
+            - definition: Grosella negra y pomelo.
+            - paragraph: USD 18.50
+            - paragraph: Bolsa de 250 g · quedan 5 bolsas
+            - button "Elegir Nyeri, Kenia, 250 g, USD 18.50"
+          - listitem:
+            - text: Brasil
+            - heading "Cerrado Mineiro" [level=5]
+            - term: Variedades
+            - definition: Mundo Novo y Catuaí
+            - term: Proceso
+            - definition: Natural
+            - term: Tueste
+            - definition: Medio
+            - term: Notas
+            - definition: Maní tostado y chocolate con leche.
+            - paragraph: USD 15.00
+            - paragraph: Bolsa de 500 g · quedan 20 bolsas
+            - button "Elegir Cerrado Mineiro, Brasil, 500 g, USD 15.00"
+          - listitem:
+            - text: Indonesia
+            - heading "Sumatra Mandheling" [level=5]
+            - term: Variedad
+            - definition: Variedades locales
+            - term: Proceso
+            - definition: Semilavado
+            - term: Tueste
+            - definition: Oscuro
+            - term: Notas
+            - definition: Tierra húmeda, cedro y especias.
+            - paragraph: USD 14.00
+            - paragraph: Bolsa de 340 g · quedan 3 bolsas
+            - button "Elegir Sumatra Mandheling, Indonesia, 340 g, USD 14.00"
+        - paragraph: "Todavía no ha elegido un café: use «Elegir» en una tarjeta."
+      - group "Molienda":
+        - text: Molienda
+        - radio "Grano entero"
+        - text: Grano entero
+        - radio "Molido para espresso"
+        - text: Molido para espresso
+        - radio "Molido para filtro"
+        - text: Molido para filtro
+        - radio "Molido grueso (prensa francesa)"
+        - text: Molido grueso (prensa francesa)
+      - text: Cantidad de bolsas
+      - spinbutton "Cantidad de bolsas": "1"
+      - button "Agregar al carrito"
+      - paragraph: Entero de 1 a 10, sin superar las bolsas disponibles.
+      - paragraph
+    - region "Variedades de Costa Rica":
+      - heading "Variedades de Costa Rica" [level=3]
+      - paragraph: Los 7 cafés de Costa Rica vienen de 7 regiones cafetaleras distintas y reúnen estas 7 variedades.
+      - term: Catuaí
+      - definition: "Cruce de Caturra amarillo y Mundo Novo, hecho en 1949 en el Instituto Agronômico de Campinas (Brasil) y liberado en 1972. En la tienda: Dota (GC-007) y San Vito (GC-012)."
+      - term: Caturra
+      - definition: "Mutación natural enana de Bourbon, descubierta en Minas Gerais (Brasil) entre 1915 y 1918. En la tienda: Dota (GC-007)."
+      - term: Centroamericano (H1)
+      - definition: "Híbrido F1 entre T5296, una línea Sarchimor, y Rume Sudan. Lo desarrollaron CIRAD, PROMECAFE y el CATIE, y se liberó en 2010. En la tienda: Orosi (GC-010)."
+      - term: Costa Rica 95
+      - definition: "Catimor (Híbrido de Timor × Caturra) que el ICAFE seleccionó por su rendimiento y su resistencia a la roya y al ojo de gallo; hoy es susceptible a ambas enfermedades. En la tienda: Hojancha (GC-013)."
+      - term: Geisha
+      - definition: "Originaria del bosque de Gori Gesha, en Etiopía. En 1953 llegó al CATIE, en Costa Rica. En la tienda: Rivas (GC-011)."
+      - term: Villa Sarchí
+      - definition: "Mutación natural enana de Bourbon, hallada en el noroeste de Alajuela en las décadas de 1950 o 1960. Es uno de los progenitores del Sarchimor original y, por esa vía, de T5296 y de Centroamericano. En la tienda: Sarchí (GC-008)."
+      - term: Villalobos
+      - definition: "Mutación natural enana de Typica, presente sobre todo en Costa Rica. En la tienda: Tres Ríos (GC-009)."
+      - paragraph: "Regiones según la reorganización del ICAFE de 2025: Tarrazú pasó a llamarse Los Santos; Tres Ríos se unió a Valle Central, y Orosi, a Turrialba; Brunca se dividió en Pérez Zeledón y Coto Brus, y Guanacaste se integró a Zona Norte. Los cafés de Tres Ríos y Orosi conservan el nombre local. Altitudes, notas de cata, precios y existencias son ficticios, como la tienda."
+      - paragraph: "Fuentes, consultadas el 13 de octubre de 2026:"
+      - list:
+        - listitem:
+          - link "El Financiero":
+            - /url: https://www.elfinancierocr.com/economia-y-politica/tres-rios-desaparece-del-mapa-de-las-regiones/YPE3AYVL7JHVFOHPLYZM3VWHQM/story/
+          - text: "(F. Ruiz León, 22 de junio de 2025): cambios en las regiones cafetaleras."
+        - listitem:
+          - link "World Coffee Research, «T5296»":
+            - /url: https://varieties.worldcoffeeresearch.org/varieties/t5296
+          - text: ": linaje de T5296 y de Centroamericano."
+        - listitem:
+          - text: "Ozone Coffee:"
+          - link "Villa Sarchí":
+            - /url: https://ozonecoffee.co.uk/blogs/varietals/coffee-varietal-villa-sarchi
+          - text: ","
+          - link "Caturra":
+            - /url: https://ozonecoffee.co.uk/blogs/varietals/coffee-varietal-caturra
+          - text: ","
+          - link "Catuaí":
+            - /url: https://ozonecoffee.co.uk/blogs/varietals/coffee-varietal-catuai
+          - text: "y"
+          - link "Centroamericano":
+            - /url: https://ozonecoffee.co.uk/blogs/varietals/coffee-varietal-centroamericano
+          - text: .
+        - listitem:
+          - text: "Sweet Maria's:"
+          - link "Villalobos":
+            - /url: https://library.sweetmarias.com/glossary/villalobos/
+          - text: "y"
+          - link "Costa Rica 95":
+            - /url: https://library.sweetmarias.com/glossary/costa-rica-95-cr95-variety/
+          - text: .
+        - listitem:
+          - link "Wikipedia, «Geisha (coffee)»":
+            - /url: https://en.wikipedia.org/wiki/Geisha_(coffee)
+          - text: ": origen de Geisha y llegada al CATIE."
+  - region "Carrito":
+    - heading "Carrito" [level=2]
+    - paragraph:
+      - text: El carrito está vacío. Agregue cafés desde el
+      - link "formulario del catálogo":
+        - /url: "#add-to-cart"
+      - text: .
+  - region "Pedido":
+    - heading "Pedido" [level=2]
+    - paragraph: El pedido se hace en dos pasos. El paso 1 calcula el total sin cobrar. El paso 2 cobra y necesita la aprobación explícita de la persona usuaria.
+    - form "Paso 1. Preparar el pedido":
+      - heading "Paso 1. Preparar el pedido" [level=3]
+      - text: Nombre y apellido
+      - textbox "Nombre y apellido"
+      - text: Correo electrónico
+      - textbox "Correo electrónico"
+      - text: Recibe el comprobante. Formato nombre@dominio.tld
+      - group "Entrega":
+        - text: Entrega
+        - radio "Envío a domicilio (USD 5.00; gratis desde USD 40.00)"
+        - text: Envío a domicilio (USD 5.00; gratis desde USD 40.00)
+        - radio "Retiro en tienda (sin costo)"
+        - text: Retiro en tienda (sin costo)
+      - text: Dirección de entrega
+      - textbox "Dirección de entrega"
+      - text: Obligatoria si elige envío a domicilio. Fecha de entrega
+      - textbox "Fecha de entrega":
+        - /placeholder: AAAA-MM-DD
+      - text: Formato AAAA-MM-DD, entre 2026-10-17 y 2026-11-14. Indicaciones (opcional)
+      - textbox "Indicaciones (opcional)"
+      - button "Preparar pedido (sin cobro)"
+      - paragraph
+    - form "Paso 2. Confirmar y pagar":
+      - heading "Paso 2. Confirmar y pagar" [level=3]
+      - paragraph: Este paso cobra el pedido. Antes de enviarlo, la persona usuaria tiene que haber aprobado el total exacto. Escribir el total es la prueba de que se revisó.
+      - group:
+        - text: Total aprobado (USD)
+        - textbox "Total aprobado (USD)" [disabled]
+        - button "Confirmar y pagar" [disabled]
+        - paragraph: Escriba el total del resumen, por ejemplo 31.00.
+      - paragraph: No hay ningún pedido preparado.
+  - region "Políticas":
+    - heading "Políticas" [level=2]
+    - term: Sin aprobación previa
+    - definition: Consultar y filtrar el catálogo, agregar y quitar cafés del carrito, preparar pedidos.
+    - term: Con aprobación explícita
+    - definition: Confirmar y pagar. La persona usuaria aprueba el total exacto antes de cada pago.
+    - term: Límites
+    - definition: Hasta 10 bolsas por café y pedido. Un pedido preparado vence a los 30 minutos y se anula si el carrito cambia.
+    - term: Datos personales
+    - definition: Nombre, correo y, para envíos, dirección. Se usan solo para entregar el pedido.
+    - term: Contacto humano
+    - definition:
+      - link "soporte@granoclaro.example":
+        - /url: mailto:soporte@granoclaro.example
+- contentinfo:
+  - paragraph:
+    - text: Grano Claro es una tienda ficticia para demostrar diseño web orientado a agentes. Catálogo actualizado el
+    - time: 15 de octubre de 2026
+    - text: . Interfaz para agentes, versión 1.1.
+  - paragraph: "Diagnóstico de este navegador: no expone WebMCP; los formularios y la API JavaScript funcionan igual."

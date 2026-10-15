@@ -1,0 +1,626 @@
+- banner:
+  - heading "Grano Claro" [level=1]
+  - text: "#top"
+  - paragraph: "Tienda de café en una sola página: una persona puede comprar directamente y un agente de software puede comprar en su nombre."
+  - paragraph:
+    - strong: "Demostración:"
+    - text: los pedidos son simulados y no se cobra nada.
+  - group "Navegar como":
+    - text: Navegar como
+    - radio "Persona"
+    - text: Persona Tarjetas con variedad, proceso y notas de cata.
+    - radio "Agente" [checked]
+    - text: Agente Tabla con SKU, herramientas, consola y datos estructurados.
+    - paragraph: "Las dos vistas comparten catálogo, carrito y pedido: cambiar de vista no borra nada."
+    - paragraph
+  - navigation "Secciones de la página":
+    - list:
+      - listitem:
+        - link "Para agentes":
+          - /url: "#for-agents"
+      - listitem:
+        - link "Consola":
+          - /url: "#agent-console"
+      - listitem:
+        - link "Catálogo":
+          - /url: "#catalog"
+      - listitem:
+        - link "Variedades":
+          - /url: "#variety-guide"
+      - listitem:
+        - link "Carrito":
+          - /url: "#cart"
+      - listitem:
+        - link "Pedido":
+          - /url: "#checkout"
+      - listitem:
+        - link "Políticas":
+          - /url: "#policies"
+- main:
+  - region "Estado":
+    - heading "Estado" [level=2]
+    - text: "#status"
+    - status: Listo La página está lista. Todavía no se ha hecho ninguna acción. Evento 0.
+    - paragraph: "Carrito: 0 bolsas, subtotal USD 0.00. Último pedido: ninguno."
+  - region "Para agentes":
+    - heading "Para agentes" [level=2]
+    - text: "#for-agents"
+    - paragraph:
+      - text: "Todo lo que se puede hacer en esta tienda está en esta página: sin ventanas emergentes, sin desplazamiento infinito y sin pasos que caduquen en menos de 30 minutos. Cada acción deja su resultado en"
+      - link "Estado":
+        - /url: "#status-panel"
+      - text: (
+      - code: "#status"
+      - text: ) con un número de evento y un código.
+    - list:
+      - listitem:
+        - text: Consulte el
+        - link "catálogo":
+          - /url: "#catalog"
+        - text: ": 13 cafés, 7 de ellos de Costa Rica, con SKU, variedad, precio en USD (impuestos incluidos), peso en gramos y bolsas disponibles. Para filtrarlo, use el formulario"
+        - code: "#filters"
+        - text: o la URL, por ejemplo
+        - code: "?origin=CR&in_stock_only=true"
+        - text: .
+      - listitem:
+        - text: Agregue cafés con el formulario
+        - code: "#add-to-cart"
+        - text: ": marque la fila del café, elija la molienda y la cantidad, y pulse «Agregar al carrito»."
+      - listitem:
+        - text: Revise el
+        - link "carrito":
+          - /url: "#cart"
+        - text: . Cada línea tiene un identificador (L1, L2…) y un botón «Quitar».
+      - listitem:
+        - text: Prepare el pedido con
+        - code: "#prepare-order"
+        - text: ". Este paso no cobra: calcula el envío y devuelve el número de pedido y el total exacto."
+      - listitem:
+        - text: Muestre ese total a la persona usuaria. Con su aprobación, escriba el total en
+        - code: "#confirm-order"
+        - text: ; ella pulsa «Confirmar y pagar», el único paso con cargo, desde la vista Persona.
+    - heading "Convenciones" [level=3]
+    - term: Montos
+    - definition: "USD con punto decimal: 14.50 son catorce dólares con cincuenta centavos. Impuestos incluidos."
+    - term: Fechas
+    - definition: ISO 8601 (AAAA-MM-DD). La tienda usa la hora UTC−06:00.
+    - term: Identificadores
+    - definition:
+      - text: SKU de
+      - code: GC-001
+      - text: a
+      - code: GC-013
+      - text: ; origen como código de país ISO 3166-1 (
+      - code: CO
+      - text: ","
+      - code: CR
+      - text: ","
+      - code: ET
+      - text: …); variedad con su nombre, como en el filtro (
+      - code: Villa Sarchí
+      - text: ","
+      - code: Geisha
+      - text: …); molienda como
+      - code: whole
+      - text: ","
+      - code: espresso
+      - text: ","
+      - code: filter
+      - text: o
+      - code: french_press
+      - text: .
+    - term: Errores
+    - definition:
+      - text: Código estable (por ejemplo
+      - code: ERR_STOCK
+      - text: ), el motivo y cómo corregirlo. Los mensajes permanecen hasta la siguiente acción.
+    - heading "Otras formas de usar la tienda" [level=3]
+    - term: Vistas
+    - definition:
+      - text: "Esta es la vista Agente: tabla con SKU, herramientas y"
+      - link "consola":
+        - /url: "#agent-console"
+      - text: . La vista Persona muestra los mismos cafés en tarjetas. Las dos comparten carrito y pedido; para abrir esta vista directamente, añada
+      - code: "#modo-agente"
+      - text: al enlace de la página.
+    - term: WebMCP
+    - definition:
+      - text: "Cada formulario es una herramienta:"
+      - code: search_products
+      - text: ","
+      - code: add_to_cart
+      - text: ","
+      - code: prepare_order
+      - text: "y"
+      - code: confirm_order
+      - text: ; además se registran
+      - code: remove_from_cart
+      - text: "y"
+      - code: get_cart
+      - text: .
+      - code: confirm_order
+      - text: "solo rellena el formulario: el envío lo hace la persona."
+    - term: JavaScript
+    - definition:
+      - code: await granoClaro.call(nombre, argumentos)
+      - text: con las mismas herramientas, salvo
+      - code: confirm_order
+      - text: .
+      - code: granoClaro.snapshot()
+      - text: devuelve el estado, y
+      - code: granoClaro.view()
+      - text: ", la vista activa. Los esquemas JSON están en"
+      - code: "#agent-tools"
+      - text: .
+    - term: HTTP
+    - definition:
+      - text: "En el sitio publicado:"
+      - code: /llms.txt
+      - text: ","
+      - code: /index.md
+      - text: y la API de
+      - code: /openapi.yaml
+      - text: . En esta vista previa funcionan la página y su API JavaScript.
+  - region "Consola del agente":
+    - heading "Consola del agente" [level=2]
+    - text: "#agent-console"
+    - paragraph:
+      - text: Compre como lo haría un agente que ejecuta código. Cada llamada usa
+      - code: granoClaro.call(nombre, argumentos)
+      - text: ": el resultado JSON aparece aquí y en"
+      - link "Estado":
+        - /url: "#status-panel"
+      - text: ", y el catálogo, el carrito y el pedido se actualizan igual que con los formularios."
+    - heading "Recorrido de ejemplo" [level=3]
+    - list "Recorrido de ejemplo":
+      - listitem:
+        - text: "Buscar cafés de Costa Rica con bolsas disponibles:"
+        - code: search_products
+        - text: con
+        - code: "{\"origin\":\"CR\",\"in_stock_only\":true}"
+        - text: .
+        - button "Ejecutar el paso 1"
+      - listitem:
+        - text: Agregar 2 bolsas de Dota (
+        - code: GC-007
+        - text: ") molidas para filtro:"
+        - code: add_to_cart
+        - text: con
+        - code: "{\"sku\":\"GC-007\",\"grind\":\"filter\",\"quantity\":2}"
+        - text: .
+        - button "Ejecutar el paso 2"
+      - listitem:
+        - text: "Revisar el carrito:"
+        - code: get_cart
+        - text: .
+        - button "Ejecutar el paso 3"
+      - listitem:
+        - text: "Preparar el pedido, sin cobro, con datos de ejemplo y envío a domicilio:"
+        - code: prepare_order
+        - text: ". Si el carrito estaba vacío al empezar, el total es USD 38.00: 2 × 16.50 = 33.00, más 5.00 de envío (gratis desde USD 40.00)."
+        - button "Ejecutar el paso 4"
+      - listitem:
+        - text: Escribir el total en el paso 2 (
+        - code: "#confirm-order"
+        - text: ) sin enviarlo, como hace un agente WebMCP con
+        - code: confirm_order
+        - text: .
+        - button "Ejecutar el paso 5"
+      - listitem:
+        - text: "Intentar pagar por JavaScript:"
+        - code: confirm_order
+        - text: responde
+        - code: ERR_HUMAN_STEP
+        - text: .
+        - button "Ejecutar el paso 6"
+    - button "Ejecutar los 6 pasos"
+    - button "Pasar a la vista Persona para pagar"
+    - paragraph: "El pago lo decide la persona: en la vista Persona el total ya está escrito y solo falta pulsar «Confirmar y pagar»."
+    - heading "Llamada libre" [level=3]
+    - form "Llamada libre a la API JavaScript":
+      - text: Herramienta
+      - combobox "Herramienta":
+        - option "search_products" [selected]
+        - option "add_to_cart"
+        - option "remove_from_cart"
+        - option "get_cart"
+        - option "prepare_order"
+        - option "confirm_order (solo la persona)"
+      - text: Al cambiarla se carga un ejemplo. Argumentos (JSON)
+      - textbox "Argumentos (JSON)": "{ \"origin\": \"CR\", \"variety\": \"Geisha\" }"
+      - button "Ejecutar"
+      - button "Cargar ejemplo"
+      - paragraph
+    - paragraph: Resultado
+    - text: Todavía no hay ninguna llamada.
+    - heading "Últimas llamadas" [level=3]
+    - list:
+      - listitem: Ninguna todavía.
+    - heading "Lo que percibe un agente" [level=3]
+    - paragraph: "Un agente percibe una página de cuatro maneras: la captura de pantalla (lo que usted ve), el árbol de accesibilidad, el HTML sin procesar y las herramientas estructuradas."
+    - group: Árbol de accesibilidad aproximado
+    - group: "HTML sin procesar: datos estructurados JSON-LD"
+    - group:
+      - text: "Herramientas estructuradas: esquemas de"
+      - code: "#agent-tools"
+    - group:
+      - text: "Estado de la tienda:"
+      - code: granoClaro.snapshot()
+  - region "Catálogo":
+    - heading "Catálogo" [level=2]
+    - text: "#catalog"
+    - paragraph: 13 cafés de especialidad en bolsas selladas, 7 de ellos de Costa Rica. Precio por bolsa en USD, impuestos incluidos. Envío a domicilio USD 5.00, gratis desde USD 40.00; retiro en tienda sin costo.
+    - search "Filtrar el catálogo":
+      - heading "Filtrar el catálogo" [level=3]
+      - text: "#filters Texto"
+      - searchbox "Texto"
+      - text: "Nombre, región, país, variedad, proceso o notas. Ejemplo: honey. Origen"
+      - combobox "Origen":
+        - option "Cualquier origen" [selected]
+        - option "Brasil (BR)"
+        - option "Colombia (CO)"
+        - option "Costa Rica (CR)"
+        - option "Etiopía (ET)"
+        - option "Guatemala (GT)"
+        - option "Indonesia (ID)"
+        - option "Kenia (KE)"
+      - text: Variedad
+      - combobox "Variedad":
+        - option "Cualquier variedad" [selected]
+        - option "Bourbon"
+        - option "Castillo"
+        - option "Catuaí"
+        - option "Caturra"
+        - option "Centroamericano (H1)"
+        - option "Costa Rica 95"
+        - option "Geisha"
+        - option "Mundo Novo"
+        - option "SL28"
+        - option "SL34"
+        - option "Variedades locales"
+        - option "Villa Sarchí"
+        - option "Villalobos"
+      - text: Tueste
+      - combobox "Tueste":
+        - option "Cualquier tueste" [selected]
+        - option "Claro"
+        - option "Medio"
+        - option "Oscuro"
+      - text: Precio máximo (USD)
+      - spinbutton "Precio máximo (USD)"
+      - text: "Por bolsa, con punto decimal. Ejemplo: 16.00"
+      - checkbox "Solo cafés disponibles"
+      - text: Solo cafés disponibles
+      - button "Aplicar filtros"
+      - button "Quitar filtros"
+      - paragraph: Mostrando 13 de 13 cafés.
+    - form "Agregar al carrito":
+      - heading "Agregar al carrito" [level=3]
+      - text: "#add-to-cart"
+      - group "Café (marque una fila)":
+        - text: Café (marque una fila)
+        - table "13 cafés, 7 de Costa Rica. Precio por bolsa en USD, impuestos incluidos.":
+          - caption: 13 cafés, 7 de Costa Rica. Precio por bolsa en USD, impuestos incluidos.
+          - rowgroup:
+            - row "Elegir SKU Café Origen Variedad Proceso Tueste Peso Precio Disponibles":
+              - columnheader "Elegir"
+              - columnheader "SKU"
+              - columnheader "Café"
+              - columnheader "Origen"
+              - columnheader "Variedad"
+              - columnheader "Proceso"
+              - columnheader "Tueste"
+              - columnheader "Peso"
+              - columnheader "Precio"
+              - columnheader "Disponibles"
+          - rowgroup:
+            - row "Huila Colombia (CO) 340 g GC-001 Caturra, Castillo Lavado Medio USD 14.50 12 bolsas":
+              - cell "Huila Colombia (CO) 340 g":
+                - radio "Huila Colombia (CO) 340 g"
+              - cell "GC-001":
+                - code: GC-001
+              - rowheader "Huila"
+              - cell "Colombia (CO)"
+              - cell "Caturra, Castillo"
+              - cell "Lavado"
+              - cell "Medio"
+              - cell "340 g"
+              - cell "USD 14.50"
+              - cell "12 bolsas"
+            - row "Yirgacheffe Etiopía (ET) 340 g GC-002 Variedades locales Lavado Claro USD 17.00 8 bolsas":
+              - cell "Yirgacheffe Etiopía (ET) 340 g":
+                - radio "Yirgacheffe Etiopía (ET) 340 g"
+              - cell "GC-002":
+                - code: GC-002
+              - rowheader "Yirgacheffe"
+              - cell "Etiopía (ET)"
+              - cell "Variedades locales"
+              - cell "Lavado"
+              - cell "Claro"
+              - cell "340 g"
+              - cell "USD 17.00"
+              - cell "8 bolsas"
+            - row "Huehuetenango Guatemala (GT) 340 g GC-003 Bourbon, Caturra Lavado Oscuro USD 13.00 Agotado":
+              - cell "Huehuetenango Guatemala (GT) 340 g":
+                - radio "Huehuetenango Guatemala (GT) 340 g" [disabled]
+              - cell "GC-003":
+                - code: GC-003
+              - rowheader "Huehuetenango"
+              - cell "Guatemala (GT)"
+              - cell "Bourbon, Caturra"
+              - cell "Lavado"
+              - cell "Oscuro"
+              - cell "340 g"
+              - cell "USD 13.00"
+              - cell "Agotado"
+            - row "Nyeri Kenia (KE) 250 g GC-004 SL28, SL34 Lavado Claro USD 18.50 5 bolsas":
+              - cell "Nyeri Kenia (KE) 250 g":
+                - radio "Nyeri Kenia (KE) 250 g"
+              - cell "GC-004":
+                - code: GC-004
+              - rowheader "Nyeri"
+              - cell "Kenia (KE)"
+              - cell "SL28, SL34"
+              - cell "Lavado"
+              - cell "Claro"
+              - cell "250 g"
+              - cell "USD 18.50"
+              - cell "5 bolsas"
+            - row "Cerrado Mineiro Brasil (BR) 500 g GC-005 Mundo Novo, Catuaí Natural Medio USD 15.00 20 bolsas":
+              - cell "Cerrado Mineiro Brasil (BR) 500 g":
+                - radio "Cerrado Mineiro Brasil (BR) 500 g"
+              - cell "GC-005":
+                - code: GC-005
+              - rowheader "Cerrado Mineiro"
+              - cell "Brasil (BR)"
+              - cell "Mundo Novo, Catuaí"
+              - cell "Natural"
+              - cell "Medio"
+              - cell "500 g"
+              - cell "USD 15.00"
+              - cell "20 bolsas"
+            - row "Sumatra Mandheling Indonesia (ID) 340 g GC-006 Variedades locales Semilavado Oscuro USD 14.00 3 bolsas":
+              - cell "Sumatra Mandheling Indonesia (ID) 340 g":
+                - radio "Sumatra Mandheling Indonesia (ID) 340 g"
+              - cell "GC-006":
+                - code: GC-006
+              - rowheader "Sumatra Mandheling"
+              - cell "Indonesia (ID)"
+              - cell "Variedades locales"
+              - cell "Semilavado"
+              - cell "Oscuro"
+              - cell "340 g"
+              - cell "USD 14.00"
+              - cell "3 bolsas"
+            - row "Dota Costa Rica (CR) 340 g GC-007 Región Los Santos, 1750 m Caturra, Catuaí Lavado Medio USD 16.50 14 bolsas":
+              - cell "Dota Costa Rica (CR) 340 g":
+                - radio "Dota Costa Rica (CR) 340 g"
+              - cell "GC-007":
+                - code: GC-007
+              - rowheader "Dota Región Los Santos, 1750 m"
+              - cell "Costa Rica (CR)"
+              - cell "Caturra, Catuaí"
+              - cell "Lavado"
+              - cell "Medio"
+              - cell "340 g"
+              - cell "USD 16.50"
+              - cell "14 bolsas"
+            - row "Sarchí Costa Rica (CR) 340 g GC-008 Región Valle Occidental, 1450 m Villa Sarchí Honey amarillo Claro USD 18.00 9 bolsas":
+              - cell "Sarchí Costa Rica (CR) 340 g":
+                - radio "Sarchí Costa Rica (CR) 340 g"
+              - cell "GC-008":
+                - code: GC-008
+              - rowheader "Sarchí Región Valle Occidental, 1450 m"
+              - cell "Costa Rica (CR)"
+              - cell "Villa Sarchí"
+              - cell "Honey amarillo"
+              - cell "Claro"
+              - cell "340 g"
+              - cell "USD 18.00"
+              - cell "9 bolsas"
+            - row "Tres Ríos Costa Rica (CR) 340 g GC-009 Región Valle Central, 1500 m Villalobos Lavado Medio USD 17.00 11 bolsas":
+              - cell "Tres Ríos Costa Rica (CR) 340 g":
+                - radio "Tres Ríos Costa Rica (CR) 340 g"
+              - cell "GC-009":
+                - code: GC-009
+              - rowheader "Tres Ríos Región Valle Central, 1500 m"
+              - cell "Costa Rica (CR)"
+              - cell "Villalobos"
+              - cell "Lavado"
+              - cell "Medio"
+              - cell "340 g"
+              - cell "USD 17.00"
+              - cell "11 bolsas"
+            - row "Orosi Costa Rica (CR) 340 g GC-010 Región Turrialba, 1200 m Centroamericano (H1) Lavado Medio USD 14.50 16 bolsas":
+              - cell "Orosi Costa Rica (CR) 340 g":
+                - radio "Orosi Costa Rica (CR) 340 g"
+              - cell "GC-010":
+                - code: GC-010
+              - rowheader "Orosi Región Turrialba, 1200 m"
+              - cell "Costa Rica (CR)"
+              - cell "Centroamericano (H1)"
+              - cell "Lavado"
+              - cell "Medio"
+              - cell "340 g"
+              - cell "USD 14.50"
+              - cell "16 bolsas"
+            - row "Rivas Costa Rica (CR) 250 g GC-011 Región Pérez Zeledón, 1650 m Geisha Natural Claro USD 26.00 2 bolsas":
+              - cell "Rivas Costa Rica (CR) 250 g":
+                - radio "Rivas Costa Rica (CR) 250 g"
+              - cell "GC-011":
+                - code: GC-011
+              - rowheader "Rivas Región Pérez Zeledón, 1650 m"
+              - cell "Costa Rica (CR)"
+              - cell "Geisha"
+              - cell "Natural"
+              - cell "Claro"
+              - cell "250 g"
+              - cell "USD 26.00"
+              - cell "2 bolsas"
+            - row "San Vito Costa Rica (CR) 340 g GC-012 Región Coto Brus, 1300 m Catuaí Honey rojo Medio USD 16.00 7 bolsas":
+              - cell "San Vito Costa Rica (CR) 340 g":
+                - radio "San Vito Costa Rica (CR) 340 g"
+              - cell "GC-012":
+                - code: GC-012
+              - rowheader "San Vito Región Coto Brus, 1300 m"
+              - cell "Costa Rica (CR)"
+              - cell "Catuaí"
+              - cell "Honey rojo"
+              - cell "Medio"
+              - cell "340 g"
+              - cell "USD 16.00"
+              - cell "7 bolsas"
+            - row "Hojancha Costa Rica (CR) 500 g GC-013 Región Zona Norte, 1000 m Costa Rica 95 Lavado Oscuro USD 13.50 18 bolsas":
+              - cell "Hojancha Costa Rica (CR) 500 g":
+                - radio "Hojancha Costa Rica (CR) 500 g"
+              - cell "GC-013":
+                - code: GC-013
+              - rowheader "Hojancha Región Zona Norte, 1000 m"
+              - cell "Costa Rica (CR)"
+              - cell "Costa Rica 95"
+              - cell "Lavado"
+              - cell "Oscuro"
+              - cell "500 g"
+              - cell "USD 13.50"
+              - cell "18 bolsas"
+      - group "Molienda":
+        - text: Molienda
+        - radio "Grano entero"
+        - text: Grano entero
+        - radio "Molido para espresso"
+        - text: Molido para espresso
+        - radio "Molido para filtro"
+        - text: Molido para filtro
+        - radio "Molido grueso (prensa francesa)"
+        - text: Molido grueso (prensa francesa)
+      - text: Cantidad de bolsas
+      - spinbutton "Cantidad de bolsas": "1"
+      - button "Agregar al carrito"
+      - paragraph: Entero de 1 a 10, sin superar las bolsas disponibles.
+      - paragraph
+    - region "Variedades de Costa Rica":
+      - heading "Variedades de Costa Rica" [level=3]
+      - text: "#variety-guide"
+      - paragraph: Los 7 cafés de Costa Rica vienen de 7 regiones cafetaleras distintas y reúnen estas 7 variedades.
+      - term: Catuaí
+      - definition: "Cruce de Caturra amarillo y Mundo Novo, hecho en 1949 en el Instituto Agronômico de Campinas (Brasil) y liberado en 1972. En la tienda: Dota (GC-007) y San Vito (GC-012)."
+      - term: Caturra
+      - definition: "Mutación natural enana de Bourbon, descubierta en Minas Gerais (Brasil) entre 1915 y 1918. En la tienda: Dota (GC-007)."
+      - term: Centroamericano (H1)
+      - definition: "Híbrido F1 entre T5296, una línea Sarchimor, y Rume Sudan. Lo desarrollaron CIRAD, PROMECAFE y el CATIE, y se liberó en 2010. En la tienda: Orosi (GC-010)."
+      - term: Costa Rica 95
+      - definition: "Catimor (Híbrido de Timor × Caturra) que el ICAFE seleccionó por su rendimiento y su resistencia a la roya y al ojo de gallo; hoy es susceptible a ambas enfermedades. En la tienda: Hojancha (GC-013)."
+      - term: Geisha
+      - definition: "Originaria del bosque de Gori Gesha, en Etiopía. En 1953 llegó al CATIE, en Costa Rica. En la tienda: Rivas (GC-011)."
+      - term: Villa Sarchí
+      - definition: "Mutación natural enana de Bourbon, hallada en el noroeste de Alajuela en las décadas de 1950 o 1960. Es uno de los progenitores del Sarchimor original y, por esa vía, de T5296 y de Centroamericano. En la tienda: Sarchí (GC-008)."
+      - term: Villalobos
+      - definition: "Mutación natural enana de Typica, presente sobre todo en Costa Rica. En la tienda: Tres Ríos (GC-009)."
+      - paragraph: "Regiones según la reorganización del ICAFE de 2025: Tarrazú pasó a llamarse Los Santos; Tres Ríos se unió a Valle Central, y Orosi, a Turrialba; Brunca se dividió en Pérez Zeledón y Coto Brus, y Guanacaste se integró a Zona Norte. Los cafés de Tres Ríos y Orosi conservan el nombre local. Altitudes, notas de cata, precios y existencias son ficticios, como la tienda."
+      - paragraph: "Fuentes, consultadas el 13 de octubre de 2026:"
+      - list:
+        - listitem:
+          - link "El Financiero":
+            - /url: https://www.elfinancierocr.com/economia-y-politica/tres-rios-desaparece-del-mapa-de-las-regiones/YPE3AYVL7JHVFOHPLYZM3VWHQM/story/
+          - text: "(F. Ruiz León, 22 de junio de 2025): cambios en las regiones cafetaleras."
+        - listitem:
+          - link "World Coffee Research, «T5296»":
+            - /url: https://varieties.worldcoffeeresearch.org/varieties/t5296
+          - text: ": linaje de T5296 y de Centroamericano."
+        - listitem:
+          - text: "Ozone Coffee:"
+          - link "Villa Sarchí":
+            - /url: https://ozonecoffee.co.uk/blogs/varietals/coffee-varietal-villa-sarchi
+          - text: ","
+          - link "Caturra":
+            - /url: https://ozonecoffee.co.uk/blogs/varietals/coffee-varietal-caturra
+          - text: ","
+          - link "Catuaí":
+            - /url: https://ozonecoffee.co.uk/blogs/varietals/coffee-varietal-catuai
+          - text: "y"
+          - link "Centroamericano":
+            - /url: https://ozonecoffee.co.uk/blogs/varietals/coffee-varietal-centroamericano
+          - text: .
+        - listitem:
+          - text: "Sweet Maria's:"
+          - link "Villalobos":
+            - /url: https://library.sweetmarias.com/glossary/villalobos/
+          - text: "y"
+          - link "Costa Rica 95":
+            - /url: https://library.sweetmarias.com/glossary/costa-rica-95-cr95-variety/
+          - text: .
+        - listitem:
+          - link "Wikipedia, «Geisha (coffee)»":
+            - /url: https://en.wikipedia.org/wiki/Geisha_(coffee)
+          - text: ": origen de Geisha y llegada al CATIE."
+  - region "Carrito":
+    - heading "Carrito" [level=2]
+    - text: "#cart"
+    - paragraph:
+      - text: El carrito está vacío. Agregue cafés desde el
+      - link "formulario del catálogo":
+        - /url: "#add-to-cart"
+      - text: .
+  - region "Pedido":
+    - heading "Pedido" [level=2]
+    - text: "#checkout"
+    - paragraph: El pedido se hace en dos pasos. El paso 1 calcula el total sin cobrar. El paso 2 cobra y necesita la aprobación explícita de la persona usuaria.
+    - form "Paso 1. Preparar el pedido":
+      - heading "Paso 1. Preparar el pedido" [level=3]
+      - text: "#prepare-order Nombre y apellido"
+      - textbox "Nombre y apellido"
+      - text: Correo electrónico
+      - textbox "Correo electrónico"
+      - text: Recibe el comprobante. Formato nombre@dominio.tld
+      - group "Entrega":
+        - text: Entrega
+        - radio "Envío a domicilio (USD 5.00; gratis desde USD 40.00)"
+        - text: Envío a domicilio (USD 5.00; gratis desde USD 40.00)
+        - radio "Retiro en tienda (sin costo)"
+        - text: Retiro en tienda (sin costo)
+      - text: Dirección de entrega
+      - textbox "Dirección de entrega"
+      - text: Obligatoria si elige envío a domicilio. Fecha de entrega
+      - textbox "Fecha de entrega":
+        - /placeholder: AAAA-MM-DD
+      - text: Formato AAAA-MM-DD, entre 2026-10-17 y 2026-11-14. Indicaciones (opcional)
+      - textbox "Indicaciones (opcional)"
+      - button "Preparar pedido (sin cobro)"
+      - paragraph
+    - form "Paso 2. Confirmar y pagar":
+      - heading "Paso 2. Confirmar y pagar" [level=3]
+      - text: "#confirm-order"
+      - paragraph: Este paso cobra el pedido. Antes de enviarlo, la persona usuaria tiene que haber aprobado el total exacto. Escribir el total es la prueba de que se revisó.
+      - paragraph:
+        - text: "En la vista Agente, el botón de pago está desactivado: el agente puede escribir el total, pero quien paga es la persona, desde la vista Persona. Es una convención de esta demostración, no una barrera de seguridad; en el sitio publicado, la API HTTP exige además el permiso OAuth"
+        - code: orders:confirm
+        - text: ", que solo se concede tras el consentimiento interactivo de la persona."
+      - group:
+        - text: Total aprobado (USD)
+        - textbox "Total aprobado (USD)" [disabled]
+        - button "Confirmar y pagar" [disabled]
+        - paragraph: Escriba el total del resumen, por ejemplo 31.00.
+      - paragraph: No hay ningún pedido preparado.
+  - region "Políticas para agentes":
+    - heading "Políticas para agentes" [level=2]
+    - text: "#policies"
+    - term: Sin aprobación previa
+    - definition: Consultar y filtrar el catálogo, agregar y quitar cafés del carrito, preparar pedidos.
+    - term: Con aprobación explícita
+    - definition: Confirmar y pagar. La persona usuaria aprueba el total exacto antes de cada pago.
+    - term: Límites
+    - definition: Hasta 10 bolsas por café y pedido. Un pedido preparado vence a los 30 minutos y se anula si el carrito cambia.
+    - term: Datos personales
+    - definition: Nombre, correo y, para envíos, dirección. Se usan solo para entregar el pedido.
+    - term: Identificación
+    - definition: En el sitio publicado, los agentes se identifican con su User-Agent y, si pueden, con firmas HTTP (Web Bot Auth). La tienda no usa CAPTCHA.
+    - term: Contacto humano
+    - definition:
+      - link "soporte@granoclaro.example":
+        - /url: mailto:soporte@granoclaro.example
+- contentinfo:
+  - paragraph:
+    - text: Grano Claro es una tienda ficticia para demostrar diseño web orientado a agentes. Catálogo actualizado el
+    - time: 15 de octubre de 2026
+    - text: . Interfaz para agentes, versión 1.1.
+  - paragraph: "Diagnóstico de este navegador: no expone WebMCP; los formularios y la API JavaScript funcionan igual."

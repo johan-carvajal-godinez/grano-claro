@@ -1,0 +1,106 @@
+/* Vistas Persona y Agente: mismos datos y mismo estado. Sin JavaScript no hay data-mode y se ve todo. */
+html[data-mode="human"] .agent-only,
+html[data-mode="human"] .box-head .ref,
+html[data-mode="human"] .status .meta { display: none !important; }
+html[data-mode="agent"] .human-only { display: none !important; }
+
+.new-note { max-width: 60ch; margin-bottom: .5rem; }
+.mode-switch { margin-top: 1.25rem; max-width: 48rem; }
+.mode-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(17rem, 100%), 1fr)); gap: .6rem; }
+.mode-option {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: .1rem .65rem;
+  padding: .65rem .85rem; border: 1.5px solid var(--rule); border-radius: 6px; cursor: pointer;
+}
+.mode-option input { margin-top: .15rem; grid-row: span 2; }
+.mode-name { font-weight: 700; }
+.mode-option .hint { grid-column: 2; }
+.mode-option:has(input:checked) { border-color: var(--action); background: var(--select); box-shadow: inset 0 0 0 1px var(--action); }
+.mode-note { margin: .6rem 0 0; }
+
+/* Vista Persona: tarjetas generadas desde las filas de la tabla */
+.card-groups { display: grid; gap: 1.75rem; }
+.group-title {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .2rem .75rem;
+  padding-bottom: .4rem; margin-bottom: 1rem; border-bottom: 2px solid var(--ink); font-size: 1.125rem;
+}
+.cards {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(15.5rem, 100%), 1fr)); gap: 1rem;
+}
+.card {
+  display: flex; flex-direction: column; gap: .55rem; min-width: 0;
+  padding: .9rem 1rem 1rem; border: 1.5px solid var(--rule); border-radius: 6px; background: var(--paper);
+}
+.card.is-picked { border-color: var(--action); background: var(--select); box-shadow: inset 0 0 0 1px var(--action); }
+.card.is-out { color: var(--ink-2); }
+.card-top { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .6rem; }
+.card-where { margin: -.35rem 0 0; font-size: .9375rem; color: var(--ink-2); }
+.chip {
+  display: inline-block; padding: 0 .55rem; border: 1.5px solid var(--rule); border-radius: 999px;
+  font-size: .875rem; font-weight: 700; line-height: 1.6; color: var(--ink-2);
+}
+.chip--cr { border-color: var(--origin); color: var(--origin); background: var(--origin-bg); }
+.card-name { font-size: 1.1875rem; }
+.facts { display: grid; gap: .2rem; margin: 0; font-size: .9375rem; }
+.facts > div { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); gap: .75rem; }
+.facts dt { color: var(--ink-2); }
+.facts dd { margin: 0; }
+.card-foot {
+  margin-top: auto; padding-top: .7rem; border-top: 1px solid var(--rule);
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: .1rem 1rem;
+}
+.card-price { margin: 0; font-size: 1.25rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.card-price { grid-column: 1; grid-row: 1; }
+.card-meta { margin: 0; grid-column: 1 / -1; grid-row: 2; font-size: .9375rem; color: var(--ink-2); }
+.card-foot .pick-btn { grid-column: 2; grid-row: 1; }
+.pick-btn svg { display: none; width: 1em; height: 1em; margin-right: .35rem; vertical-align: -.125em; }
+.pick-btn[aria-pressed="true"] { background: var(--action); color: var(--action-ink); }
+.pick-btn[aria-pressed="true"] svg { display: inline-block; }
+.pick-btn:disabled { border-color: var(--rule); color: var(--ink-2); }
+.pick-summary { margin: 1.25rem 0 0; padding: .7rem .9rem; border-left: 4px solid var(--action); background: var(--select); font-weight: 700; }
+.pick-summary[data-state="empty"] { border-left-color: var(--rule); background: transparent; color: var(--ink-2); font-weight: 400; }
+.cell-sub { display: block; font-size: .875rem; font-weight: 400; color: var(--ink-2); }
+#catalog-table { font-size: .9375rem; }
+#catalog-table th, #catalog-table td { padding: .5rem .45rem; }
+#catalog-table td[id^="origin-"] { white-space: nowrap; }
+#catalog-table td.pick { padding-block: 0; }
+.pick-hit { display: flex; align-items: center; justify-content: center; min-width: 2.75rem; min-height: 2.75rem; cursor: pointer; }
+tr.is-out .pick-hit { cursor: not-allowed; }
+
+/* Guía de variedades */
+.guide-dl { max-width: 80ch; }
+.guide-lot { display: block; font-size: .9375rem; color: var(--ink-2); }
+.guide-note { max-width: 80ch; margin: 1.1rem 0 0; font-size: .9375rem; color: var(--ink-2); }
+.source-list { max-width: 80ch; margin: .35rem 0 0; padding-left: 1.2rem; font-size: .9375rem; color: var(--ink-2); }
+.source-list li { margin: .2rem 0; }
+
+/* Vista Agente: consola */
+.walk { list-style: none; counter-reset: walk; margin: .5rem 0 0; padding: 0; max-width: 84ch; }
+.walk > li {
+  counter-increment: walk; display: grid; grid-template-columns: 1.9rem minmax(0, 1fr) auto; align-items: start;
+  gap: .3rem .75rem; padding: .6rem 0; border-bottom: 1px solid var(--rule);
+}
+.walk > li::before {
+  content: counter(walk); display: grid; place-items: center; width: 1.75rem; height: 1.75rem;
+  border: 2px solid var(--ink); border-radius: 50%; font-size: .875rem; font-weight: 700; font-variant-numeric: tabular-nums;
+}
+.walk-text { min-width: 0; }
+.walk-mark { grid-column: 2 / -1; margin: 0; font-size: .9375rem; }
+.walk-mark:empty { display: none; }
+.walk-mark[data-state="success"] { color: var(--ok); }
+.walk-mark[data-state="error"] { color: var(--err); }
+.walk-mark[data-state="expected"] { color: var(--action); }
+.console-grid { display: grid; grid-template-columns: minmax(0, 17rem) minmax(0, 1fr); gap: 1rem 1.25rem; align-items: start; }
+.code-input { font-family: var(--font-code); font-size: .9375rem; }
+.code-block {
+  margin: .5rem 0 0; padding: .75rem .9rem; max-height: 26rem; overflow: auto;
+  font: .875rem/1.5 var(--font-code); white-space: pre; tab-size: 2;
+  background: var(--tag); border: 1px solid var(--rule); border-radius: 4px;
+}
+.call-log { list-style: none; margin: .5rem 0 0; padding: 0; font-size: .9375rem; max-width: 84ch; }
+.call-log li { margin: .3rem 0; }
+.is-ok { color: var(--ok); }
+.is-err { color: var(--err); }
+.peek { margin-top: .75rem; padding-top: .5rem; border-top: 1px solid var(--rule); }
+.peek > summary { cursor: pointer; font-weight: 700; padding: .65rem 0; }
+.agent-note { margin: 0 0 1rem; padding: .6rem .85rem; border-left: 4px solid var(--action); background: var(--select); max-width: 80ch; }

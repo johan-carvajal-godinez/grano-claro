@@ -1,0 +1,164 @@
+@@ header
+<header class="box box--header" id="top">
+  <div class="box-head"><h1>Grano Claro</h1><span class="ref">#top</span></div>
+  <p class="lede">Tienda de café en una sola página: una persona puede comprar directamente y un agente de software puede comprar en su nombre.</p>
+  <p class="new-note human-only"><strong>Nuevo:</strong> @@NCR@@ cafés de Costa Rica, cada uno de una región cafetalera distinta, con variedades como Villa Sarchí, Villalobos y Geisha. <a href="#variety-guide">Conozca las variedades</a>.</p>
+  <p class="demo-note"><strong>Demostración:</strong> los pedidos son simulados y no se cobra nada.</p>
+  <fieldset class="mode-switch" id="mode-switch" hidden>
+    <legend>Navegar como</legend>
+    <div class="mode-options">
+      <label class="mode-option" for="mode-human"><input type="radio" id="mode-human" name="view_mode" value="human" aria-labelledby="mode-human-name" aria-describedby="mode-human-hint"><span class="mode-name" id="mode-human-name">Persona</span><span class="hint" id="mode-human-hint">Tarjetas con variedad, proceso y notas de cata.</span></label>
+      <label class="mode-option" for="mode-agent"><input type="radio" id="mode-agent" name="view_mode" value="agent" aria-labelledby="mode-agent-name" aria-describedby="mode-agent-hint"><span class="mode-name" id="mode-agent-name">Agente</span><span class="hint" id="mode-agent-hint">Tabla con SKU, herramientas, consola y datos estructurados.</span></label>
+    </div>
+    <p class="hint mode-note">Las dos vistas comparten catálogo, carrito y pedido: cambiar de vista no borra nada.</p>
+    <p class="sr-only" id="mode-live" aria-live="polite"></p>
+  </fieldset>
+  <nav aria-label="Secciones de la página">
+    <ul class="nav-list">
+      <li class="agent-only"><a href="#for-agents">Para agentes</a></li>
+      <li class="agent-only" id="nav-console" hidden><a href="#agent-console">Consola</a></li>
+      <li><a href="#catalog">Catálogo</a></li>
+      <li><a href="#variety-guide">Variedades</a></li>
+      <li><a href="#cart">Carrito</a></li>
+      <li><a href="#checkout">Pedido</a></li>
+      <li><a href="#policies">Políticas</a></li>
+    </ul>
+  </nav>
+</header>
+
+@@ for-agents
+<section class="box agent-only" id="for-agents" aria-labelledby="for-agents-title">
+  <div class="box-head"><h2 id="for-agents-title">Para agentes</h2><span class="ref">#for-agents</span></div>
+  <p class="prose">Todo lo que se puede hacer en esta tienda está en esta página: sin ventanas emergentes, sin desplazamiento infinito y sin pasos que caduquen en menos de 30 minutos. Cada acción deja su resultado en <a href="#status-panel">Estado</a> (<code>#status</code>) con un número de evento y un código.</p>
+  <ol class="steps">
+    <li>Consulte el <a href="#catalog">catálogo</a>: @@N@@ cafés, @@NCR@@ de ellos de Costa Rica, con SKU, variedad, precio en USD (impuestos incluidos), peso en gramos y bolsas disponibles. Para filtrarlo, use el formulario <code>#filters</code> o la URL, por ejemplo <code>?origin=CR&amp;in_stock_only=true</code>.</li>
+    <li>Agregue cafés con el formulario <code>#add-to-cart</code>: marque la fila del café, elija la molienda y la cantidad, y pulse «Agregar al carrito».</li>
+    <li>Revise el <a href="#cart">carrito</a>. Cada línea tiene un identificador (L1, L2…) y un botón «Quitar».</li>
+    <li>Prepare el pedido con <code>#prepare-order</code>. Este paso no cobra: calcula el envío y devuelve el número de pedido y el total exacto.</li>
+    <li>Muestre ese total a la persona usuaria. Con su aprobación, escriba el total en <code>#confirm-order</code>; ella pulsa «Confirmar y pagar», el único paso con cargo, desde la vista Persona.</li>
+  </ol>
+
+  <h3 class="sub">Convenciones</h3>
+  <dl class="dl">
+    <dt>Montos</dt><dd>USD con punto decimal: 14.50 son catorce dólares con cincuenta centavos. Impuestos incluidos.</dd>
+    <dt>Fechas</dt><dd>ISO 8601 (AAAA-MM-DD). La tienda usa la hora UTC−06:00.</dd>
+    <dt>Identificadores</dt><dd>SKU de <code>GC-001</code> a <code>GC-013</code>; origen como código de país ISO 3166-1 (<code>CO</code>, <code>CR</code>, <code>ET</code>…); variedad con su nombre, como en el filtro (<code>Villa Sarchí</code>, <code>Geisha</code>…); molienda como <code>whole</code>, <code>espresso</code>, <code>filter</code> o <code>french_press</code>.</dd>
+    <dt>Errores</dt><dd>Código estable (por ejemplo <code>ERR_STOCK</code>), el motivo y cómo corregirlo. Los mensajes permanecen hasta la siguiente acción.</dd>
+  </dl>
+
+  <h3 class="sub">Otras formas de usar la tienda</h3>
+  <dl class="dl">
+    <dt>Vistas</dt><dd>Esta es la vista Agente: tabla con SKU, herramientas y <a href="#agent-console">consola</a>. La vista Persona muestra los mismos cafés en tarjetas. Las dos comparten carrito y pedido; para abrir esta vista directamente, añada <code>#modo-agente</code> al enlace de la página.</dd>
+    <dt>WebMCP</dt><dd>Cada formulario es una herramienta: <code>search_products</code>, <code>add_to_cart</code>, <code>prepare_order</code> y <code>confirm_order</code>; además se registran <code>remove_from_cart</code> y <code>get_cart</code>. <code>confirm_order</code> solo rellena el formulario: el envío lo hace la persona.</dd>
+    <dt>JavaScript</dt><dd><code>await granoClaro.call(nombre, argumentos)</code> con las mismas herramientas, salvo <code>confirm_order</code>. <code>granoClaro.snapshot()</code> devuelve el estado, y <code>granoClaro.view()</code>, la vista activa. Los esquemas JSON están en <code>#agent-tools</code>.</dd>
+    <dt>HTTP</dt><dd>En el sitio publicado: <code>/llms.txt</code>, <code>/index.md</code> y la API de <code>/openapi.yaml</code>. En esta vista previa funcionan la página y su API JavaScript.</dd>
+  </dl>
+</section>
+
+@@ console
+<section class="box agent-only" id="agent-console" aria-labelledby="console-title" hidden>
+  <div class="box-head"><h2 id="console-title">Consola del agente</h2><span class="ref">#agent-console</span></div>
+  <p class="prose">Compre como lo haría un agente que ejecuta código. Cada llamada usa <code>granoClaro.call(nombre, argumentos)</code>: el resultado JSON aparece aquí y en <a href="#status-panel">Estado</a>, y el catálogo, el carrito y el pedido se actualizan igual que con los formularios.</p>
+
+  <h3 class="sub" id="walk-title">Recorrido de ejemplo</h3>
+  <ol class="walk" id="walk" role="list" aria-labelledby="walk-title">
+    <li><div class="walk-text">Buscar cafés de Costa Rica con bolsas disponibles: <code>search_products</code> con <code>@@WALK_SEARCH@@</code>.</div><button type="button" class="secondary small" data-walk="0">Ejecutar<span class="sr-only"> el paso 1</span></button><p class="walk-mark" id="walk-mark-1"></p></li>
+    <li><div class="walk-text">Agregar 2 bolsas de Dota (<code>GC-007</code>) molidas para filtro: <code>add_to_cart</code> con <code>@@WALK_ADD@@</code>.</div><button type="button" class="secondary small" data-walk="1">Ejecutar<span class="sr-only"> el paso 2</span></button><p class="walk-mark" id="walk-mark-2"></p></li>
+    <li><div class="walk-text">Revisar el carrito: <code>get_cart</code>.</div><button type="button" class="secondary small" data-walk="2">Ejecutar<span class="sr-only"> el paso 3</span></button><p class="walk-mark" id="walk-mark-3"></p></li>
+    <li><div class="walk-text">Preparar el pedido, sin cobro, con datos de ejemplo y envío a domicilio: <code>prepare_order</code>. Si el carrito estaba vacío al empezar, el total es USD 38.00: 2 × 16.50 = 33.00, más 5.00 de envío (gratis desde USD 40.00).</div><button type="button" class="secondary small" data-walk="3">Ejecutar<span class="sr-only"> el paso 4</span></button><p class="walk-mark" id="walk-mark-4"></p></li>
+    <li><div class="walk-text">Escribir el total en el paso 2 (<code>#confirm-order</code>) sin enviarlo, como hace un agente WebMCP con <code>confirm_order</code>.</div><button type="button" class="secondary small" data-walk="4">Ejecutar<span class="sr-only"> el paso 5</span></button><p class="walk-mark" id="walk-mark-5"></p></li>
+    <li><div class="walk-text">Intentar pagar por JavaScript: <code>confirm_order</code> responde <code>ERR_HUMAN_STEP</code>.</div><button type="button" class="secondary small" data-walk="5">Ejecutar<span class="sr-only"> el paso 6</span></button><p class="walk-mark" id="walk-mark-6"></p></li>
+  </ol>
+  <div class="actions">
+    <button type="button" id="walk-all">Ejecutar los 6 pasos</button>
+    <button type="button" class="secondary" id="walk-handoff">Pasar a la vista Persona para pagar</button>
+  </div>
+  <p class="hint below">El pago lo decide la persona: en la vista Persona el total ya está escrito y solo falta pulsar «Confirmar y pagar».</p>
+
+  <h3 class="sub">Llamada libre</h3>
+  <form id="console-form" novalidate aria-label="Llamada libre a la API JavaScript">
+    <div class="console-grid">
+      <div class="field">
+        <label for="console-tool">Herramienta</label>
+        <select id="console-tool" name="tool" aria-describedby="console-tool-hint"></select>
+        <span class="hint" id="console-tool-hint">Al cambiarla se carga un ejemplo.</span>
+      </div>
+      <div class="field">
+        <label for="console-args">Argumentos (JSON)</label>
+        <textarea id="console-args" name="args" class="code-input" rows="5" spellcheck="false" autocomplete="off" autocapitalize="off"></textarea>
+      </div>
+    </div>
+    <div class="actions">
+      <button type="submit" id="console-run">Ejecutar</button>
+      <button type="button" class="secondary" id="console-example">Cargar ejemplo</button>
+      <p class="local-result" id="console-summary" aria-live="polite"></p>
+    </div>
+  </form>
+  <p class="field-label mt" id="console-output-label">Resultado</p>
+  <pre class="code-block" id="console-output" tabindex="0" aria-labelledby="console-output-label">Todavía no hay ninguna llamada.</pre>
+  <h3 class="sub">Últimas llamadas</h3>
+  <ul class="call-log" id="console-log" role="list"><li>Ninguna todavía.</li></ul>
+
+  <h3 class="sub">Lo que percibe un agente</h3>
+  <p class="prose">Un agente percibe una página de cuatro maneras: la captura de pantalla (lo que usted ve), el árbol de accesibilidad, el HTML sin procesar y las herramientas estructuradas.</p>
+  <details class="peek" id="peek-ax-panel">
+    <summary>Árbol de accesibilidad aproximado</summary>
+    <fieldset class="mt">
+      <legend>Vista que se analiza</legend>
+      <div class="choices">
+        <label class="choice" for="ax-human"><input type="radio" id="ax-human" name="ax_view" value="human">Vista Persona</label>
+        <label class="choice" for="ax-agent"><input type="radio" id="ax-agent" name="ax_view" value="agent" checked>Vista Agente</label>
+      </div>
+    </fieldset>
+    <p class="hint mt" id="peek-ax-count"></p>
+    <pre class="code-block" id="peek-ax" tabindex="0" aria-label="Árbol de accesibilidad aproximado"></pre>
+  </details>
+  <details class="peek">
+    <summary>HTML sin procesar: datos estructurados JSON-LD</summary>
+    <pre class="code-block" id="peek-jsonld" tabindex="0" aria-label="JSON-LD de schema.org"></pre>
+  </details>
+  <details class="peek">
+    <summary>Herramientas estructuradas: esquemas de <code>#agent-tools</code></summary>
+    <pre class="code-block" id="peek-tools" tabindex="0" aria-label="Esquemas JSON de las herramientas"></pre>
+  </details>
+  <details class="peek" id="peek-snapshot-panel">
+    <summary>Estado de la tienda: <code>granoClaro.snapshot()</code></summary>
+    <pre class="code-block" id="peek-snapshot" tabindex="0" aria-label="Instantánea del estado"></pre>
+  </details>
+</section>
+
+@@ variety-field
+      <div class="field">
+        <label for="f-variety">Variedad</label>
+        <select id="f-variety" name="variety" aria-describedby="err-variety"
+                toolparamdescription="@@VARIETY_DESC@@">
+          <option value="">Cualquier variedad</option>
+@@VARIETY_OPTIONS@@
+        </select>
+        <span class="field-error" id="err-variety" data-error-for="variety" hidden></span>
+      </div>
+
+@@ cards
+      <div class="card-groups human-only" id="product-cards" hidden></div>
+      <p class="pick-summary human-only" id="pick-summary" tabindex="-1" data-state="empty" hidden>Todavía no ha elegido un café.</p>
+
+@@ guide
+  <section class="box" id="variety-guide" aria-labelledby="variety-title">
+    <div class="box-head"><h3 id="variety-title">Variedades de Costa Rica</h3><span class="ref">#variety-guide</span></div>
+    <p class="prose">Los @@NCR@@ cafés de Costa Rica vienen de @@NCR@@ regiones cafetaleras distintas y reúnen estas @@NCR@@ variedades.</p>
+    <dl class="dl guide-dl">
+@@GUIDE_ITEMS@@
+    </dl>
+    <p class="guide-note">Regiones según la reorganización del ICAFE de 2025: Tarrazú pasó a llamarse Los Santos; Tres Ríos se unió a Valle Central, y Orosi, a Turrialba; Brunca se dividió en Pérez Zeledón y Coto Brus, y Guanacaste se integró a Zona Norte. Los cafés de Tres Ríos y Orosi conservan el nombre local. Altitudes, notas de cata, precios y existencias son ficticios, como la tienda.</p>
+    <p class="guide-note">Fuentes, consultadas el 13 de octubre de 2026:</p>
+    <ul class="source-list">
+      <li><a href="@@SRC_ef@@">El Financiero</a> (F. Ruiz León, 22 de junio de 2025): cambios en las regiones cafetaleras.</li>
+      <li><a href="@@SRC_wcr_t5296@@">World Coffee Research, «T5296»</a>: linaje de T5296 y de Centroamericano.</li>
+      <li>Ozone Coffee: <a href="@@SRC_oz_villa_sarchi@@">Villa Sarchí</a>, <a href="@@SRC_oz_caturra@@">Caturra</a>, <a href="@@SRC_oz_catuai@@">Catuaí</a> y <a href="@@SRC_oz_h1@@">Centroamericano</a>.</li>
+      <li>Sweet Maria's: <a href="@@SRC_sm_villalobos@@">Villalobos</a> y <a href="@@SRC_sm_cr95@@">Costa Rica 95</a>.</li>
+      <li><a href="@@SRC_wiki_geisha@@">Wikipedia, «Geisha (coffee)»</a>: origen de Geisha y llegada al CATIE.</li>
+    </ul>
+  </section>
+
+@@ confirm-note
+    <p class="agent-note agent-only" id="confirm-agent-note">En la vista Agente, el botón de pago está desactivado: el agente puede escribir el total, pero quien paga es la persona, desde la vista Persona. Es una convención de esta demostración, no una barrera de seguridad; en el sitio publicado, la API HTTP exige además el permiso OAuth <code>orders:confirm</code>, que solo se concede tras el consentimiento interactivo de la persona.</p>
